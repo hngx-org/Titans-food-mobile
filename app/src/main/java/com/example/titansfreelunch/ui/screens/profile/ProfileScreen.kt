@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.ui.screen.profile
+package com.example.titansfreelunch.ui.screens.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
