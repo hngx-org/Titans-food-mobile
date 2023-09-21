@@ -24,4 +24,5 @@
     <string name="staff_popup_text">You can now receive lunch</string>
     <string name="go_to_home">Go to Home</string>
     <string name="add_bank_details">Add Bank Details</string>
+    <string name="save_bank_details">Save bank details</string>
 </resources>

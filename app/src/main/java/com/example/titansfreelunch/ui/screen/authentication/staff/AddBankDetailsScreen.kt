@@ -63,7 +63,8 @@ fun AddBankDetailsScreen(
             Text(
                 text = "Bank Name",
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 20.dp)
+                modifier = Modifier
+                    .padding(top = 20.dp)
                     .fillMaxWidth(0.9f)
                     .padding(bottom = 5.dp),
                 fontSize = 16.sp,
@@ -182,7 +183,7 @@ fun AddBankDetailsScreen(
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
-                    text = stringResource(id = R.string.sign_up),
+                    text = stringResource(R.string.save_bank_details),
                     color = Color.White,
                     fontSize = 18.sp
                 )
