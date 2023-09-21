@@ -2,4 +2,6 @@
 
 This is the FreeLunch Task Project for the HNGx Team Titans.
 
-Test branch
+archtecture use is mvvm
+
+Room used to communicate with db
