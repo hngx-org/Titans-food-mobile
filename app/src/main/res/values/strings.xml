@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TitansFreeLunch</string>
+    <string name="welcome_to_lu">Welcome to LU</string>
+    <string name="sign_up_as">Sign up as:</string>
+    <string name="organization">Organization</string>
+    <string name="staff">Staff</string>
+    <string name="staff_signup">staff signup</string>
+    <string name="organization_signup">organization signup</string>
+    <string name="next_step">next step</string>
 </resources>
