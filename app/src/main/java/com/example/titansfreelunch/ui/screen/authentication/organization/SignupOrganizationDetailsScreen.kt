@@ -37,7 +37,8 @@ import com.example.titansfreelunch.R
 @Composable
 fun SignupOrganizationDetailsScreen(
     modifier: Modifier = Modifier,
-    onOrganizationDetailsSubmit: () -> Unit
+    onOrganizationDetailsSubmit: () -> Unit,
+    onOrganizationSignupButtonClicked: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -45,6 +46,9 @@ fun SignupOrganizationDetailsScreen(
     ) {
         Text(
             text = "Sign Up",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(20.dp)
         )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -159,7 +163,7 @@ fun SignupOrganizationDetailsScreen(
             )
             Button(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-                onClick = { /*TODO*/ },
+                onClick = { onOrganizationSignupButtonClicked() },
                 modifier = Modifier
                     .padding(top = 60.dp)
                     .fillMaxWidth(0.9f),
@@ -179,5 +183,8 @@ fun SignupOrganizationDetailsScreen(
 @Preview(showBackground = true)
 @Composable
 fun SignupOrganizationDetailsScreenPreview() {
-    SignupOrganizationDetailsScreen(onOrganizationDetailsSubmit = {})
+    SignupOrganizationDetailsScreen(
+        onOrganizationDetailsSubmit = {},
+        onOrganizationSignupButtonClicked = {}
+    )
 }
