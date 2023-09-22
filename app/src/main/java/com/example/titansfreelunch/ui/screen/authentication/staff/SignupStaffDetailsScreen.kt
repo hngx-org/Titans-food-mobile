@@ -15,7 +15,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,23 +23,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.titansfreelunch.R
+import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupStaffDetailsScreen(
+    uiState: SignupStaffUiState,
+    onFirstNameChange: (String) -> Unit,
+    onLastNameChange: (String) -> Unit,
+    onEmailAddressChange: (String) -> Unit,
+    onPhoneNumberChange: (String) -> Unit,
+    onInviteCodeChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onSignupClick: () -> Unit,
     modifier: Modifier = Modifier,
     onStaffDetailsSubmit: () -> Unit,
     submitStaffSignupDetails: () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -68,7 +74,7 @@ fun SignupStaffDetailsScreen(
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize()
-                ){
+                ) {
                     Image(
                         painter = painterResource(id = R.drawable.camera_icon),
                         contentDescription = "Add Image",
@@ -92,8 +98,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.firstName,
+                onValueChange = onFirstNameChange,
                 placeholder = {
                     Text(text = "Enter first name")
                 },
@@ -111,8 +117,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.lastName,
+                onValueChange = onLastNameChange,
                 placeholder = {
                     Text(text = "Enter last name")
                 },
@@ -130,8 +136,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.emailAddress,
+                onValueChange = onEmailAddressChange,
                 placeholder = {
                     Text(text = "Enter email address")
                 },
@@ -149,8 +155,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.phoneNumber,
+                onValueChange = onPhoneNumberChange,
                 placeholder = {
                     Text(text = "Enter phone number")
                 },
@@ -168,8 +174,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.inviteCode,
+                onValueChange = onInviteCodeChange,
                 placeholder = {
                     Text(text = "Enter invite code number")
                 },
@@ -187,8 +193,8 @@ fun SignupStaffDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onStaffDetailsSubmit },
+                value = uiState.password,
+                onValueChange = onPasswordChange,
                 placeholder = {
                     Text(text = "Set password")
                 },
