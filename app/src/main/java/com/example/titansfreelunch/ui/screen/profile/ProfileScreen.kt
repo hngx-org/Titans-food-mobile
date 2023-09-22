@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -26,11 +28,14 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,12 +56,13 @@ import androidx.compose.ui.unit.dp
 import com.example.titansfreelunch.R
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
     onNavigateBack: () -> Unit,
     onCameraClick: () -> Unit,
-    onPasswordClick: () -> Unit,
+    onSavePasswordClick: () -> Unit,
     onSaveClick: () -> Unit
 ) {
     Scaffold(
@@ -149,6 +155,9 @@ fun ProfileScreen(
                         .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    val sheetState = rememberModalBottomSheetState()
+                    var showBottomSheet by remember { mutableStateOf(false) }
+
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(
                             text = "Full Name",
@@ -196,7 +205,9 @@ fun ProfileScreen(
                             )
                         )
                         OutlinedButton(
-                            onClick = onPasswordClick,
+                            onClick = {
+                                showBottomSheet = true
+                            },
                             colors = ButtonDefaults.outlinedButtonColors(
                                 contentColor = Color.Black
                             )
@@ -245,11 +256,110 @@ fun ProfileScreen(
                             }
                         }
                     }
+                    if (showBottomSheet) {
+                        ChangePasswordScreen(
+                            onDismiss = { showBottomSheet = false },
+                            sheetState = sheetState,
+                            onSavePasswordClick = onSavePasswordClick
+                        )
+                    }
                 }
             }
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ChangePasswordScreen(
+    onDismiss: () -> Unit,
+    onSavePasswordClick: () -> Unit,
+    sheetState: SheetState,
+    modifier: Modifier = Modifier
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        modifier = modifier,
+        containerColor = Color.White
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .imePadding()
+        ) {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Current Password",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(20),
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Password
+                    )
+                )
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "New Password",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(20),
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next,
+                        keyboardType = KeyboardType.Password
+                    )
+                )
+            }
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(
+                    text = "Re-Type Password",
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                OutlinedTextField(
+                    value = "",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(20),
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Done,
+                        keyboardType = KeyboardType.Password
+                    )
+                )
+            }
+            OutlinedButton(
+                onClick = onSavePasswordClick,
+                modifier = Modifier.fillMaxWidth().navigationBarsPadding(),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = Color(0xFF063B27)
+                )
+            ) {
+                Text(text = "Save", modifier = Modifier.padding(8.dp))
+            }
+        }
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
@@ -259,7 +369,7 @@ fun ProfileScreenPreview() {
             onNavigateBack = {},
             onCameraClick = {},
             onSaveClick = {},
-            onPasswordClick = {}
+            onSavePasswordClick = {}
         )
     }
 }

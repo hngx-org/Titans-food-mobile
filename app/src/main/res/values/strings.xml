@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">TitansFreeLunch</string>
-    <string name="welcome_to_lu">Welcome to LU</string>
-    <string name="sign_up_as">Sign up as:</string>
-    <string name="organization">Organization</string>
-    <string name="staff">Staff</string>
-    <string name="staff_signup">staff signup</string>
-    <string name="organization_signup">organization signup</string>
-    <string name="next_step">next step</string>
+    <string name="login_screen_name">Hi! Login to Continue</string>
+    <string name="box_name">Email Address</string>
+    <string name="hint_email">Enter Email Address</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="lunch">Lunch Received</string>
+    <string name="bread">bread</string>
+    <string name="screen_name">Redeem Launch</string>
+    <string name="medal">Medal</string>
 </resources>
