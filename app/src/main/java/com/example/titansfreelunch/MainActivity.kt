@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
-import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetailsScreen
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //app entry comes here
                     SignupScreen()
+                 
 
                 }
             }

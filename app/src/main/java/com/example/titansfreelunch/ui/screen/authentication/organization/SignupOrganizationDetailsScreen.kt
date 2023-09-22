@@ -45,9 +45,7 @@ fun SignupOrganizationDetailsScreen(
     ) {
         Text(
             text = "Sign Up",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(10.dp)
+            text = stringResource(R.string.sign_up),
         )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
