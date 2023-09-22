@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //app entry comes here
                     AddBankDetailsScreen (onAddStaffBankDetailsDone = {})
+
                 }
             }
         }
