@@ -14,13 +14,8 @@ import com.example.titansfreelunch.ui.screen.authentication.organization.SignupO
 import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffDetailsScreen
+import com.example.titansfreelunch.ui.screen.random.AddPeople
 
-
-enum class SignupScreens() {
-    Start,
-    SignupAsStaff,
-    SignupAsOrganization
-}
 
 //host the free lunch navigation graph
 @Composable
@@ -64,11 +59,23 @@ fun FreeLunchNavHost(
         }
         composable(route = "OrganizationDetailsScreen") {
             SetupOrganizationScreen(
-                onOrganizationSetupDetailsSubmit = {}
+                onOrganizationSetupDetailsSubmit = {},
+                onOrganizationSetupDone = { navController.navigate("OrganizationAddPeople") }
+
             )
         }
         composable(route = "AddStaffBankDetails") {
             AddBankDetailsScreen(
+                onAddStaffBankDetailsDone = {},
+                goToHomeButtonClicked = { navController.navigate("Homepage") }
+            )
+        }
+        composable(route = "OrganizationAddPeople") {
+            AddPeople()
+        }
+        composable(route = "Homepage") {
+
+        }
                 onAddStaffBankDetailsDone = {}
             )
         }

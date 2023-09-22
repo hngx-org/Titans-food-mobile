@@ -40,7 +40,8 @@ import com.example.titansfreelunch.R
 @Composable
 fun SetupOrganizationScreen(
     modifier: Modifier = Modifier,
-    onOrganizationSetupDetailsSubmit: () -> Unit
+    onOrganizationSetupDetailsSubmit: () -> Unit,
+    onOrganizationSetupDone: () -> Unit
 ) {
     var popupControl by remember { mutableStateOf(false) }
     Column(
@@ -117,12 +118,17 @@ fun SetupOrganizationScreen(
         }
     }
     if (popupControl) {
-        OrganizationSetupSuccessfulPopup()
+        OrganizationSetupSuccessfulPopup(
+            onOrganizationSetupDone = onOrganizationSetupDone
+        )
     }
 }
 
 @Composable
-fun OrganizationSetupSuccessfulPopup(modifier: Modifier = Modifier) {
+fun OrganizationSetupSuccessfulPopup(
+    modifier: Modifier = Modifier,
+    onOrganizationSetupDone: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -159,7 +165,7 @@ fun OrganizationSetupSuccessfulPopup(modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { onOrganizationSetupDone() },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     border = BorderStroke(1.dp, Color(146, 169, 160)),
                     modifier = Modifier.fillMaxWidth(0.9f)
@@ -178,6 +184,7 @@ fun OrganizationSetupSuccessfulPopup(modifier: Modifier = Modifier) {
 @Composable
 fun SetupOrganizationScreenPreview() {
     SetupOrganizationScreen(
-        onOrganizationSetupDetailsSubmit = {}
+        onOrganizationSetupDetailsSubmit = {},
+        onOrganizationSetupDone = {}
     )
 }
