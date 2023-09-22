@@ -9,13 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -31,19 +28,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.titansfreelunch.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateProfile(
-    modifier: Modifier = Modifier,
-    onDetailsSubmit: () -> Unit
+    uiState: CreateProfileUiState,
+    onFullNameChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onConfirmPasswordChange: (String) -> Unit,
+    onFinishClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val padlockIcon = Icons.Default.Lock
+
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column{
+        Column {
             Text(
                 text = "Create Profile",
                 fontSize = 30.sp,
@@ -54,9 +54,9 @@ fun CreateProfile(
                 textAlign = TextAlign.Center,
             )
             Column(
-                modifier = Modifier.fillMaxWidth() ,
+                modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ){
+            ) {
 
                 Card(
                     modifier = Modifier
@@ -67,11 +67,11 @@ fun CreateProfile(
                         containerColor = Color(208, 213, 221)
                     ),
 
-                    ){
+                    ) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
-                    ){
+                    ) {
                         Icon(
                             painter = painterResource(
                                 id = R.drawable.camera_icon
@@ -92,8 +92,8 @@ fun CreateProfile(
                     textAlign = TextAlign.Start
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { onDetailsSubmit },
+                    value = uiState.fullName,
+                    onValueChange = onFullNameChange,
                     placeholder = {
                         Text(text = "Enter your full name")
                     },
@@ -111,8 +111,8 @@ fun CreateProfile(
                     textAlign = TextAlign.Start
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { onDetailsSubmit },
+                    value = uiState.password,
+                    onValueChange = onPasswordChange,
                     placeholder = {
                         Text(text = "Enter password")
                     },
@@ -130,8 +130,8 @@ fun CreateProfile(
                     textAlign = TextAlign.Start
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { onDetailsSubmit },
+                    value = uiState.confirmPassword,
+                    onValueChange = onConfirmPasswordChange,
                     placeholder = {
                         Text(text = "Re-enter password")
                     },
@@ -141,8 +141,8 @@ fun CreateProfile(
             }
         }
         Button(
-            colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.outlinedButtonColors(Color(6, 59, 39)),
+            onClick = onFinishClick,
             modifier = Modifier
                 .padding(bottom = 20.dp)
                 .fillMaxWidth(0.9f),
@@ -157,9 +157,18 @@ fun CreateProfile(
 }
 
 
-
 @Preview(showBackground = true)
 @Composable
 fun CreateProfilePreview() {
-    CreateProfile(onDetailsSubmit = {})
+    CreateProfile(
+        uiState = CreateProfileUiState(
+            fullName = "",
+            password = "",
+            confirmPassword = ""
+        ),
+        onFullNameChange = {},
+        onPasswordChange = {},
+        onConfirmPasswordChange = {},
+        onFinishClick = {}
+    )
 }
