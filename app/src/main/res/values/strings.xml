@@ -1,28 +1,7 @@
 <resources>
     <string name="app_name">TitansFreeLunch</string>
-    <string name="welcome_to_lu">Welcome to LU</string>
-    <string name="sign_up_as">Sign up as:</string>
-    <string name="organization">Organization</string>
-    <string name="staff">Staff</string>
-    <string name="staff_signup">staff signup</string>
-    <string name="organization_signup">organization signup</string>
-    <string name="next_step">next step</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="add_image">Add Image</string>
-    <string name="org_signup_text">To create an organization, we first have to\n sign you up.</string>
-    <string name="setup_organization">Setup Organization</string>
-    <string name="organization_name">Organization Name</string>
-    <string name="enter_organization_name">Enter organization name</string>
-    <string name="set_lunch_price">Set lunch price</string>
-    <string name="lunch_price">Lunch Price</string>
-    <string name="create_organization">Create Organization</string>
-    <string name="success">success</string>
-    <string name="organization_created">Organization Created</string>
-    <string name="proceed">Proceed</string>
-    <string name="popup_text">Proceed to add members to your\n organization</string>
-    <string name="account_created">Account created</string>
-    <string name="staff_popup_text">You can now receive lunch</string>
-    <string name="go_to_home">Go to Home</string>
-    <string name="add_bank_details">Add Bank Details</string>
-    <string name="save_bank_details">Save bank details</string>
+    <string name="lunch">Lunch Received</string>
+    <string name="bread">bread</string>
+    <string name="screen_name">Redeem Launch</string>
+    <string name="medal">Medal</string>
 </resources>
