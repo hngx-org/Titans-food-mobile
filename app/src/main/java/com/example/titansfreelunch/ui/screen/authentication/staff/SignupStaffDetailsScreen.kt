@@ -43,7 +43,7 @@ fun SignupStaffDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.sign_up),
+            text = "Sign Up.",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(10.dp)
@@ -70,13 +70,13 @@ fun SignupStaffDetailsScreen(
                 ){
                     Image(
                         painter = painterResource(id = R.drawable.camera_icon),
-                        contentDescription = stringResource(R.string.add_image),
+                        contentDescription = "Add Image",
                         modifier = Modifier
                             .size(70.dp)
                             .padding(bottom = 40.dp)
                     )
                     Text(
-                        text = stringResource(R.string.add_image),
+                        text = "Add Image",
                         modifier = Modifier.padding(top = 30.dp)
                     )
                 }
@@ -202,7 +202,7 @@ fun SignupStaffDetailsScreen(
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
-                    text = stringResource(id = R.string.sign_up),
+                    text = "Sign Up",
                     color = Color.White,
                     fontSize = 18.sp
                 )

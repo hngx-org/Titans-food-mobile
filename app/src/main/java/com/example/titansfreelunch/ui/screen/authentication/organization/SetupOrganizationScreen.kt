@@ -82,7 +82,7 @@ fun SetupOrganizationScreen(
                         .fillMaxWidth(0.9f)
                 )
                 Text(
-                    text = stringResource(R.string.lunch_price),
+                    text = stringResource(R.string.lunch_prize),
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .fillMaxWidth(0.9f)

@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.ui.screen.redeemlunch
+package com.example.titansfreelunch.feature_RedeemLaunch
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -92,7 +92,7 @@ fun WithdrawScreen(
         TopAppBar(
             title = {
                 Text(
-                    text = "Redeem Lunch",
+                    text = stringResource(id = R.string.screen_name),
                     maxLines = 1
                 )
             },

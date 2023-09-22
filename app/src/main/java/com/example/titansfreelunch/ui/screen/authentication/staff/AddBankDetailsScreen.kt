@@ -56,7 +56,7 @@ fun AddBankDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.add_bank_details),
+            text = "Add Bank Details",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(15.dp)
@@ -191,7 +191,7 @@ fun AddBankDetailsScreen(
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
-                    text = stringResource(R.string.save_bank_details),
+                    text = "Save Bank Details",
                     color = Color.White,
                     fontSize = 18.sp
                 )
@@ -283,13 +283,13 @@ fun StaffSetupSuccessfulPopup(modifier: Modifier = Modifier) {
                         .size(70.dp)
                 )
                 Text(
-                    text = stringResource(R.string.account_created),
+                    text = "Account Created",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
                 Text(
-                    text = stringResource(R.string.staff_popup_text),
+                    text = "You can now receive lunch",
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
@@ -300,7 +300,7 @@ fun StaffSetupSuccessfulPopup(modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxWidth(0.9f)
                 ) {
                     Text(
-                        text = stringResource(R.string.go_to_home),
+                        text = "Go to Home",
                         color = Color.Black
                     )
                 }
