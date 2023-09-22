@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">TitansFreeLunch</string>
     <string name="login_screen_name">Hi! Login to Continue</string>
     <string name="box_name">Email Address</string>
     <string name="hint_email">Enter Email Address</string>

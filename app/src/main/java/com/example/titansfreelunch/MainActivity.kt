@@ -10,7 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +23,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //app entry comes here
-                    SetupOrganizationScreen(onOrganizationSetupDetailsSubmit = {})
                 }
             }
         }
