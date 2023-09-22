@@ -17,7 +17,6 @@ import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffDet
 import com.example.titansfreelunch.ui.screen.random.AddPeople
 
 
-
 //host the free lunch navigation graph
 @Composable
 fun FreeLunchNavHost(
@@ -62,6 +61,7 @@ fun FreeLunchNavHost(
             SetupOrganizationScreen(
                 onOrganizationSetupDetailsSubmit = {},
                 onOrganizationSetupDone = { navController.navigate("OrganizationAddPeople") }
+
             )
         }
         composable(route = "AddStaffBankDetails") {
@@ -75,6 +75,9 @@ fun FreeLunchNavHost(
         }
         composable(route = "Homepage") {
 
+        }
+                onAddStaffBankDetailsDone = {}
+            )
         }
     }
 
