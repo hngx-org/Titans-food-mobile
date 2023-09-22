@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.feature_RedeemLaunch
+package com.example.titansfreelunch.ui.screen.redeemlunch
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
