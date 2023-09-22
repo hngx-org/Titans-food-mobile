@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,16 +35,17 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import com.example.titansfreelunch.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SetupOrganizationScreen(
+    uiState: SetupOrganizationUiState,
+    onOrganizationNameChange: (String) -> Unit,
+    onLunchPriceChange: (String) -> Unit,
+    onCreateOrganizationClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onOrganizationSetupDetailsSubmit: () -> Unit,
-    onOrganizationSetupDone: () -> Unit
 ) {
     var popupControl by remember { mutableStateOf(false) }
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -73,8 +73,8 @@ fun SetupOrganizationScreen(
                     textAlign = TextAlign.Start
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { onOrganizationSetupDetailsSubmit },
+                    value = uiState.organizationName,
+                    onValueChange = onOrganizationNameChange,
                     placeholder = {
                         Text(text = stringResource(R.string.enter_organization_name))
                     },
@@ -92,8 +92,8 @@ fun SetupOrganizationScreen(
                     textAlign = TextAlign.Start
                 )
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = { onOrganizationSetupDetailsSubmit },
+                    value = uiState.lunchPrice,
+                    onValueChange = onLunchPriceChange,
                     placeholder = {
                         Text(text = stringResource(R.string.set_lunch_price))
                     },
@@ -103,8 +103,11 @@ fun SetupOrganizationScreen(
                 )
             }
             Button(
-                colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-                onClick = { popupControl = true },
+                colors = ButtonDefaults.outlinedButtonColors(Color(6, 59, 39)),
+                onClick = {
+                    popupControl = true
+                    onCreateOrganizationClick()
+                },
                 modifier = Modifier
                     .padding(bottom = 30.dp)
                     .fillMaxWidth(0.9f),
@@ -130,13 +133,13 @@ fun OrganizationSetupSuccessfulPopup(
     onOrganizationSetupDone: () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ){
+    ) {
         Popup(
             alignment = Alignment.Center
-        ){
+        ) {
             Column(
 
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -184,7 +187,10 @@ fun OrganizationSetupSuccessfulPopup(
 @Composable
 fun SetupOrganizationScreenPreview() {
     SetupOrganizationScreen(
+        uiState = SetupOrganizationUiState(),
+        onOrganizationNameChange = {},
+        onLunchPriceChange = {},
+        onCreateOrganizationClick = { }
         onOrganizationSetupDetailsSubmit = {},
         onOrganizationSetupDone = {}
-    )
 }
