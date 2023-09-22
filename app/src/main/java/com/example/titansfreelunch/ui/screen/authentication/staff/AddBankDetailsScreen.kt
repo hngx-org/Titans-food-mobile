@@ -48,7 +48,8 @@ import com.example.titansfreelunch.R
 @Composable
 fun AddBankDetailsScreen(
     modifier: Modifier = Modifier,
-    onAddStaffBankDetailsDone: () -> Unit
+    onAddStaffBankDetailsDone: () -> Unit,
+    goToHomeButtonClicked: () -> Unit
 ) {
     var staffSetupIsSuccessful by remember { mutableStateOf(false) }
     Column(
@@ -199,7 +200,9 @@ fun AddBankDetailsScreen(
         }
     }
     if (staffSetupIsSuccessful){
-        StaffSetupSuccessfulPopup()
+        StaffSetupSuccessfulPopup(
+            goToHomeButtonClicked = goToHomeButtonClicked
+        )
     }
 }
 
@@ -257,7 +260,10 @@ fun SelectBankDropdownMenu() {
 
 
 @Composable
-fun StaffSetupSuccessfulPopup(modifier: Modifier = Modifier) {
+fun StaffSetupSuccessfulPopup(
+    modifier: Modifier = Modifier,
+    goToHomeButtonClicked: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -294,7 +300,7 @@ fun StaffSetupSuccessfulPopup(modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { goToHomeButtonClicked() },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     border = BorderStroke(1.dp, Color(146, 169, 160)),
                     modifier = Modifier.fillMaxWidth(0.9f)
@@ -314,6 +320,7 @@ fun StaffSetupSuccessfulPopup(modifier: Modifier = Modifier) {
 @Composable
 fun AddBankDetailsScreenPreview() {
     AddBankDetailsScreen(
-        onAddStaffBankDetailsDone = {}
+        onAddStaffBankDetailsDone = {},
+        goToHomeButtonClicked = {}
     )
 }
