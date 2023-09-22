@@ -61,7 +61,7 @@ fun RedeemScreen(
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(id = R.string.screen_name),
+                    text = stringResource(id = R.string.logn_screen_name),
                     maxLines = 1
                 )
             },

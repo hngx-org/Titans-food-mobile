@@ -41,7 +41,7 @@ fun Hi_Login(){
     ){
         Spacer(modifier = Modifier.height(10.dp))
         Text(
-            text = stringResource(id = R.string.screen_name),
+            text = stringResource(id = R.string.login_screen_name),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = headerColor,
