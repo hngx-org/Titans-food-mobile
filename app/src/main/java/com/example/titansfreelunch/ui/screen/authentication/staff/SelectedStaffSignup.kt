@@ -31,9 +31,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.titansfreelunch.R
+import com.example.titansfreelunch.navigation.NavigationDestination
+
+
+
 
 @Composable
-fun SelectedStaffSignup(modifier: Modifier = Modifier) {
+fun SelectedStaffSignup(
+    modifier: Modifier = Modifier,
+    onNextStaffButtonClicked: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -128,7 +135,7 @@ fun SelectedStaffSignup(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.End
                 ){
                     SmallFloatingActionButton(
-                        onClick = { /*TODO*/ },
+                        onClick = { onNextStaffButtonClicked() },
                         containerColor = Color(6, 59, 39),
                         modifier = Modifier
                             .padding(end = 10.dp)
@@ -151,11 +158,14 @@ fun SelectedStaffSignup(modifier: Modifier = Modifier) {
         }
 
     }
+
 }
 
 
 @Preview(showBackground = true)
 @Composable
 fun SignupScreePreview() {
-    SelectedStaffSignup()
+    SelectedStaffSignup(
+        onNextStaffButtonClicked = {}
+    )
 }
