@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.ui.screen.redeemlunch
+package com.example.titansfreelunch.feature_RedeemLaunch
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -61,7 +61,7 @@ fun RedeemScreen(
         TopAppBar(
             title = {
                 Text(
-                    text = "Redeem Lunch",
+                    text = stringResource(id = R.string.screen_name),
                     maxLines = 1
                 )
             },
