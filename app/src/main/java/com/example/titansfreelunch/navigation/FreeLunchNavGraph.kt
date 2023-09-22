@@ -19,11 +19,6 @@ import com.example.titansfreelunch.viewModel.signup.SetupOrganizationViewModel
 import com.example.titansfreelunch.viewModel.signup.StaffSignUpViewModel
 
 
-enum class SignupScreens() {
-    Start,
-    SignupAsStaff,
-    SignupAsOrganization
-}
 
 //host the free lunch navigation graph
 @Composable
@@ -94,10 +89,21 @@ fun FreeLunchNavHost(
                 onOrganizationNameChange = viewModel::updateOrganizationName,
                 onLunchPriceChange = viewModel::updateLunchPrice,
                 onCreateOrganizationClick = { }
+
             )
         }
         composable(route = "AddStaffBankDetails") {
             AddBankDetailsScreen(
+                onAddStaffBankDetailsDone = {},
+                goToHomeButtonClicked = { navController.navigate("Homepage") }
+            )
+        }
+        composable(route = "OrganizationAddPeople") {
+            AddPeople()
+        }
+        composable(route = "Homepage") {
+
+        }
                 onAddStaffBankDetailsDone = {}
             )
         }
