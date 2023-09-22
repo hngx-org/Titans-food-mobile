@@ -1,41 +1,65 @@
 package com.example.titansfreelunch.data.api
 
-import com.example.titansfreelunch.data.model.FreeLunchResponse
 import com.example.titansfreelunch.data.model.Lunch
 import com.example.titansfreelunch.data.model.Organization
 import com.example.titansfreelunch.data.model.OrganizationInvite
 import com.example.titansfreelunch.data.model.Withdrawal
-import com.example.titansfreelunch.data.model.Login
+import com.example.titansfreelunch.data.models.Login
 import com.example.titansfreelunch.data.model.OrganizationLunchWallet
-import com.example.titansfreelunch.data.model.Signup
-import com.example.titansfreelunch.data.model.StaffSignup
+import com.example.titansfreelunch.data.models.apiModels.SignupModel
+import com.example.titansfreelunch.data.models.StaffSignup
+import com.example.titansfreelunch.data.models.FreeLunchResponse
+import com.example.titansfreelunch.data.models.apiModels.ResponseClass
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
 interface ApiService {
 
-    // Authentication
-    @POST(" ")
+    // User Authentication
+    @POST("api/v1/auth/user/signup")
+    suspend fun signup(request: SignupModel): Response<ResponseClass>
+
+    @POST("api/auth/user/signin")
+    @Headers("Content-type: application/json, Accept: application/json")
     suspend fun login(@Body request: Login): FreeLunchResponse
 
-    @POST(" ")
-    suspend fun signup(@Body request: Signup): FreeLunchResponse
+    // For Organizations
 
-    @PUT("")
+    @POST("api/organization/invite")
+    @Headers("Content-type: application/json, Accept: application/json")
+    suspend fun createOrganizationInvite(@Body request: OrganizationInvite): FreeLunchResponse
+
+    @PUT("api/organization/create")
+    @Headers("Content-type: application/json, Accept: application/json")
     suspend fun createOrganization(
-        @Header("Authorization") authToken: String,
+        authToken: String,
         @Body request: Organization
     ): FreeLunchResponse
+
+
+
+
+//    @GET("api/organization")
+//    @Headers("Content-type: application/json, Accept: application/json")
+//    suspend fun listOrganizations(
+//        authToken: String,
+//        request : OrganizationList
+//    )
+
+    // Todo - To be continued
+
+    // For Staff
 
     @POST(" ")
     suspend fun staffSignup(@Body request: StaffSignup): FreeLunchResponse
 
-    @POST(" ")
-    suspend fun createOrganizationInvite(@Body request: OrganizationInvite): FreeLunchResponse
+
 
     @PATCH(" ")
     suspend fun updateWalletBalance(

@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.data.model
+package com.example.titansfreelunch.data.models
 
 // Staff only
 data class StaffSignup(

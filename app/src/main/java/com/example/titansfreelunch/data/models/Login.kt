@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.data.model
+package com.example.titansfreelunch.data.models
 
 data class Login(
     val email: String,

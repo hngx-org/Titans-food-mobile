@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
+import com.example.titansfreelunch.ui.screen.authentication.organization.OrganizationSetupSuccessfulPopup
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
+import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreenPreview
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,12 +27,21 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //app entry comes here
-                    SignupScreen()
-                 
+//                    SignupScreen()
+
+                    ScreenPreview()
+
+
 
                 }
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ScreenPreview() {
+    SignupOrganizationDetailsScreenPreview()
 }
 
