@@ -17,9 +17,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.core.view.WindowCompat
 
 
-private val fonts = FontFamily(
 
-)
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
