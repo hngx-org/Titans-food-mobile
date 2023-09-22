@@ -42,6 +42,8 @@ fun SignupStaffDetailsScreen(
     onPasswordChange: (String) -> Unit,
     onSignupClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onStaffDetailsSubmit: () -> Unit,
+    submitStaffSignupDetails: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -201,10 +203,9 @@ fun SignupStaffDetailsScreen(
                     .fillMaxWidth(0.9f)
             )
             Button(
-                colors = ButtonDefaults.outlinedButtonColors(Color(6, 59, 39)),
-                onClick = onSignupClick,
-                modifier = Modifier
-                    .padding(top = 20.dp)
+                colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
+                onClick = { submitStaffSignupDetails() },
+                modifier = Modifier.padding(top = 20.dp)
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
@@ -222,23 +223,8 @@ fun SignupStaffDetailsScreen(
 @Preview(showBackground = true)
 @Composable
 fun SignupStaffDetailsScreenPreview() {
-    TitansFreeLunchTheme {
-        SignupStaffDetailsScreen(
-            uiState = SignupStaffUiState(
-                emailAddress = "",
-                firstName = "",
-                lastName = "",
-                inviteCode = "",
-                password = "",
-                phoneNumber = ""
-            ),
-            onFirstNameChange = {},
-            onLastNameChange = {},
-            onEmailAddressChange = {},
-            onPhoneNumberChange = {},
-            onInviteCodeChange = {},
-            onPasswordChange = {},
-            onSignupClick = {})
-
-    }
+    SignupStaffDetailsScreen(
+        onStaffDetailsSubmit = {} ,
+        submitStaffSignupDetails = {}
+    )
 }

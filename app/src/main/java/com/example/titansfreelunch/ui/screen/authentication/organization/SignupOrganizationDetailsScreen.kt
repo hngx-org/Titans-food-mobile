@@ -22,14 +22,9 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SignupOrganizationDetailsScreen(
-    uiState: SignupOrganizationUiState,
-    onFirstNameChange: (String) -> Unit,
-    onLastNameChange: (String) -> Unit,
-    onEmailAddressChange: (String) -> Unit,
-    onPhoneNumberChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit,
-    onSignupClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onOrganizationDetailsSubmit: () -> Unit,
+    onOrganizationSignupButtonClicked: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -153,8 +148,8 @@ fun SignupOrganizationDetailsScreen(
                     .fillMaxWidth(0.9f)
             )
             Button(
-                colors = ButtonDefaults.outlinedButtonColors(Color(6, 59, 39)),
-                onClick = onSignupClick,
+                colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
+                onClick = { onOrganizationSignupButtonClicked() }
                 modifier = Modifier
                     .padding(top = 60.dp)
                     .fillMaxWidth(0.9f),
@@ -175,12 +170,8 @@ fun SignupOrganizationDetailsScreen(
 @Composable
 fun SignupOrganizationDetailsScreenPreview() {
     SignupOrganizationDetailsScreen(
-        uiState = SignupOrganizationUiState(),
-        onFirstNameChange = {},
-        onLastNameChange = {},
-        onEmailAddressChange = {},
-        onPhoneNumberChange = {},
-        onPasswordChange = {},
-        onSignupClick = {}
+        onOrganizationDetailsSubmit = {},
+        onOrganizationSignupButtonClicked = {}
     )
 }
+

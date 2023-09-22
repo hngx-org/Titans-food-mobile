@@ -42,6 +42,8 @@ fun SetupOrganizationScreen(
     onLunchPriceChange: (String) -> Unit,
     onCreateOrganizationClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onOrganizationSetupDetailsSubmit: () -> Unit,
+    onOrganizationSetupDone: () -> Unit
 ) {
     var popupControl by remember { mutableStateOf(false) }
     Column(
@@ -187,10 +189,7 @@ fun OrganizationSetupSuccessfulPopup(
 @Composable
 fun SetupOrganizationScreenPreview() {
     SetupOrganizationScreen(
-        uiState = SetupOrganizationUiState(),
-        onOrganizationNameChange = {},
-        onLunchPriceChange = {},
-        onCreateOrganizationClick = { }
         onOrganizationSetupDetailsSubmit = {},
         onOrganizationSetupDone = {}
+    )
 }
