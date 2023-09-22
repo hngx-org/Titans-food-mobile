@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">TitansFreeLunch</string>
+    <string name="screen_name">Hi! Login to Continue</string>
+    <string name="box_name">Email Address</string>
+    <string name="hint_email">Enter Email Address</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
     <string name="lunch">Lunch Received</string>
     <string name="bread">bread</string>
     <string name="screen_name">Redeem Launch</string>
