@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">TitansFreeLunch</string>
     <string name="login_screen_name">Hi! Login to Continue</string>
     <string name="box_name">Email Address</string>
     <string name="hint_email">Enter Email Address</string>
@@ -9,4 +10,21 @@
     <string name="bread">bread</string>
     <string name="screen_name">Redeem Launch</string>
     <string name="medal">Medal</string>
+    <string name="welcome_to_lu">Welcome to LU</string>
+    <string name="sign_up_as">Sign up as:</string>
+    <string name="organization">Organization</string>
+    <string name="staff">Staff</string>
+    <string name="staff_signup">staff signup</string>
+    <string name="organization_signup">organization signup</string>
+    <string name="next_step">next step</string>
+    <string name="setup_organization">Setup Organization</string>
+    <string name="organization_name">Organization Name</string>
+    <string name="enter_organization_name">Enter organization name</string>
+    <string name="lunch_prize">Lunch Prize</string>
+    <string name="set_lunch_price">Set lunch price</string>
+    <string name="create_organization">Create Organization</string>
+    <string name="success">success</string>
+    <string name="organization_created">Organization Created</string>
+    <string name="popup_text">Proceed to add members to your\n organization</string>
+    <string name="proceed">Proceed</string>
 </resources>

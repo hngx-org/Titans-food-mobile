@@ -92,7 +92,7 @@ fun WithdrawScreen(
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(id = R.string.logn_screen_name),
+                    text = "Redeem Lunch",
                     maxLines = 1
                 )
             },

@@ -44,7 +44,7 @@ fun SignupOrganizationDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(R.string.sign_up),
+            text = "Sign Up",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(10.dp)
@@ -56,7 +56,7 @@ fun SignupOrganizationDetailsScreen(
                 .background(color = Color(214, 218, 225))
         ) {
             Text(
-                text = stringResource(R.string.org_signup_text),
+                text = "To create an organization, we first have to\n sign you up.",
                 fontSize = 20.sp,
                 modifier = Modifier
                     .padding(bottom = 20.dp)
@@ -168,7 +168,7 @@ fun SignupOrganizationDetailsScreen(
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
-                    text = stringResource(id = R.string.sign_up),
+                    text = "Sign Up",
                     color = Color.White,
                     fontSize = 18.sp
                 )
