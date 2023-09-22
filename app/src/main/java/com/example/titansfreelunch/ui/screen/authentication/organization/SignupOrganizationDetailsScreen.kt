@@ -45,7 +45,6 @@ fun SignupOrganizationDetailsScreen(
     ) {
         Text(
             text = "Sign Up",
-            text = stringResource(R.string.sign_up),
         )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
