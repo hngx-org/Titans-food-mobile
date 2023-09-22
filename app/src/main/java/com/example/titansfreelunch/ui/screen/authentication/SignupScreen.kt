@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,10 +27,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.titansfreelunch.R
+import com.example.titansfreelunch.navigation.NavigationDestination
+import com.example.titansfreelunch.ui.screen.authentication.organization.SelectedOrganizationSignup
+import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
 
+
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignupScreen(modifier: Modifier = Modifier) {
+fun SignupScreen(
+    modifier: Modifier = Modifier,
+    onSignupAsStaffClicked: () -> Unit,
+    onSignupAsOrganizationClicked: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -52,6 +70,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
             )
             Row {
                 Card(
+                    onClick = onSignupAsStaffClicked ,
                     modifier = Modifier
                         .height(100.dp)
                         .width(180.dp),
@@ -79,6 +98,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
                 }
                 Spacer(modifier = Modifier.width(10.dp))
                 Card(
+                    onClick = { onSignupAsOrganizationClicked() } ,
                     modifier = Modifier
                         .height(100.dp)
                         .width(180.dp),
@@ -112,5 +132,8 @@ fun SignupScreen(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun SignupScreePreview() {
-    SignupScreen()
+    SignupScreen(
+        onSignupAsStaffClicked = {},
+        onSignupAsOrganizationClicked = {}
+    )
 }

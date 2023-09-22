@@ -36,7 +36,8 @@ import com.example.titansfreelunch.R
 @Composable
 fun SignupStaffDetailsScreen(
     modifier: Modifier = Modifier,
-    onStaffDetailsSubmit: () -> Unit
+    onStaffDetailsSubmit: () -> Unit,
+    submitStaffSignupDetails: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -197,7 +198,7 @@ fun SignupStaffDetailsScreen(
             )
             Button(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-                onClick = { /*TODO*/ },
+                onClick = { submitStaffSignupDetails() },
                 modifier = Modifier.padding(top = 20.dp)
                     .fillMaxWidth(0.9f),
             ) {
@@ -216,5 +217,8 @@ fun SignupStaffDetailsScreen(
 @Preview(showBackground = true)
 @Composable
 fun SignupStaffDetailsScreenPreview() {
-    SignupStaffDetailsScreen( onStaffDetailsSubmit = {} )
+    SignupStaffDetailsScreen(
+        onStaffDetailsSubmit = {} ,
+        submitStaffSignupDetails = {}
+    )
 }
