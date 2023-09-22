@@ -1,4 +1,4 @@
-package com.example.titansfreelunch.feature_RedeemLaunch
+package com.example.titansfreelunch.ui.screen.redeemlunch
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
