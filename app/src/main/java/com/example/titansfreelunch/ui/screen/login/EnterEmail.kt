@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,23 +19,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnterEmail(
-    modifier: Modifier = Modifier,
-    onEmailSubmit: () -> Unit
+    emailAddress: String,
+    onEmailAddressChange: (String) -> Unit,
+    onContinueClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column{
+        Column {
             Text(
                 text = "Welcome",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 6.dp ,bottom = 20.dp)
+                modifier = Modifier.padding(top = 6.dp, bottom = 20.dp)
             )
             Text(
                 text = "Enter email address to continue",
@@ -50,8 +50,8 @@ fun EnterEmail(
                 fontSize = 16.sp
             )
             OutlinedTextField(
-                value = "",
-                onValueChange = { onEmailSubmit },
+                value = emailAddress,
+                onValueChange = onEmailAddressChange,
                 placeholder = {
                     Text(text = "Enter email address")
                 },
@@ -59,9 +59,10 @@ fun EnterEmail(
             )
         }
         Button(
-            colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-            onClick = { /*TODO*/ },
-            modifier = Modifier.padding(bottom = 20.dp)
+            colors = ButtonDefaults.outlinedButtonColors(Color(6, 59, 39)),
+            onClick = onContinueClick,
+            modifier = Modifier
+                .padding(bottom = 20.dp)
                 .fillMaxWidth(0.9f),
         ) {
             Text(
@@ -76,7 +77,9 @@ fun EnterEmail(
 @Preview(showBackground = true)
 @Composable
 fun EnterEmailPreview() {
-    EnterEmail (
-        onEmailSubmit = {}
+    EnterEmail(
+        emailAddress = "",
+        onEmailAddressChange = {},
+        onContinueClick = {}
     )
 }
