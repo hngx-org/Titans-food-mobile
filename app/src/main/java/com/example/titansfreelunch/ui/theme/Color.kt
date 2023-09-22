@@ -12,3 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 val headerColor = Color(0xFF161A20)
 val loginColor = Color(0xFFE0E2E6)
 val buttonColor = Color(0xFF063B27)
+val btnContent = Color(0xFF517668)
+val redeemColour = Color(0xFF063B27)
+val btnColor = Color(0xFFECECEC)
+
