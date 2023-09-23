@@ -1,6 +1,6 @@
-package com.example.titansfreelunch.data.models.model
+package com.example.titansfreelunch.data.models
 
-import com.example.titansfreelunch.data.models.User
+import com.example.titansfreelunch.data.model.User
 
 data class FreeLunchResponse(
     val message: String,

@@ -10,12 +10,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SelectedOrganizationSignup
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
+import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreen
+import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffDetailsScreen
+import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffUiState
 import com.example.titansfreelunch.ui.screen.random.AddPeople
-
+import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 
 
 //host the free lunch navigation graph
@@ -49,19 +52,51 @@ fun FreeLunchNavHost(
         composable(route = "StaffSignup") {
             SignupStaffDetailsScreen(
                 onStaffDetailsSubmit = {},
-                submitStaffSignupDetails = { navController.navigate("AddStaffBankDetails") }
+                submitStaffSignupDetails = {
+                    navController.navigate("AddStaffBankDetails")
+                },
+                onPhoneNumberChange = {},
+                onPasswordChange = {},
+                onLastNameChange = {},
+                onFirstNameChange = {},
+                onEmailAddressChange = {},
+                onInviteCodeChange = {},
+                onSignupClick = {},
+                uiState = SignupStaffUiState(
+                    firstName = "",
+                    lastName = "",
+                    emailAddress = "",
+                    password = "",
+                    phoneNumber = "",
+                    inviteCode = ""
+                )
             )
         }
+
         composable(route = "OrganizationSignup") {
             SignupOrganizationDetailsScreen(
                 onOrganizationDetailsSubmit = {},
-                onOrganizationSignupButtonClicked = { navController.navigate("OrganizationDetailsScreen") }
+                onOrganizationSignupButtonClicked = {
+                    navController.navigate("OrganizationDetailsScreen")
+                },
+                onEmailAddressChange = {},
+                onFirstNameChange = {},
+                onLastNameChange = {},
+                onPasswordChange = {},
+                onPhoneNumberChange = {},
+                uiState = SignupOrganizationUiState()
             )
         }
         composable(route = "OrganizationDetailsScreen") {
             SetupOrganizationScreen(
                 onOrganizationSetupDetailsSubmit = {},
-                onOrganizationSetupDone = { navController.navigate("OrganizationAddPeople") }
+                onOrganizationSetupDone = {
+                    navController.navigate("OrganizationAddPeople")
+                },
+                onOrganizationNameChange = {},
+                onLunchPriceChange = {},
+                onCreateOrganizationClick = {},
+                uiState = SetupOrganizationUiState()
             )
         }
         composable(route = "AddStaffBankDetails") {

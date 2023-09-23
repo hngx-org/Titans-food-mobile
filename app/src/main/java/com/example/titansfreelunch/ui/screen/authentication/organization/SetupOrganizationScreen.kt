@@ -190,6 +190,11 @@ fun OrganizationSetupSuccessfulPopup(
 fun SetupOrganizationScreenPreview() {
     SetupOrganizationScreen(
         onOrganizationSetupDetailsSubmit = {},
+        onOrganizationSetupDone = {},
+        onCreateOrganizationClick = {},
+        onLunchPriceChange = {},
+        onOrganizationNameChange = {},
+        uiState = SetupOrganizationUiState()
         onOrganizationSetupDone = {}
     )
 }

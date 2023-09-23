@@ -1,6 +1,7 @@
 package com.example.titansfreelunch.ui.screen.sendlunch
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -38,6 +42,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -123,6 +128,7 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
             Divider(
                 color = Color(207, 255, 146),
                 modifier = Modifier
+                    .padding(bottom = 15.dp)
                     .height(5.dp)
                     .width(80.dp)
             )
@@ -163,8 +169,12 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
             Text(
                 text = "Personal message (Only Gege will see this)",
                 fontSize = 16.sp,
+                textAlign = TextAlign.Start,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 10.dp)
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .padding(bottom = 10.dp)
+
             )
             OutlinedTextField(
                 value = text,
@@ -185,9 +195,11 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
 
             Text(
                 text = "Send lunch",
-                fontSize = 18.sp,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 15.dp)
+                modifier = Modifier
+                    .padding(start = 10.dp)
+                    .padding(bottom = 15.dp)
             )
             Row(
                 horizontalArrangement = Arrangement.Center,
@@ -201,12 +213,24 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                         containerColor = Color(234, 236, 240)
                     )
                 ) {
-                    Text(text = "Single")
-                    Image(
-                        painter = painterResource(id = R.drawable.bread),
-                        contentDescription = "bread",
-                        modifier = Modifier.size(50.dp)
-                    )
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Text(
+                            text = "Single",
+                            modifier = Modifier.padding(bottom = 40.dp),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(50.dp)
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.width(20.dp))
                 Card(
@@ -218,26 +242,164 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                     )
                 ) {
                     Box(
+                        modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
-                    ) {
-                    Text(text = "Double")
-                    Row(
-                        modifier = Modifier.fillMaxSize()
                     ){
-
+                        Text(
+                            text = "Double",
+                            modifier = Modifier.padding(bottom = 40.dp),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Row {
                             Image(
                                 painter = painterResource(id = R.drawable.bread),
                                 contentDescription = "bread",
-                                modifier = Modifier.size(50.dp)
+                                modifier = Modifier
+                                    .padding(top = 50.dp)
+                                    .size(50.dp)
+                        contentAlignment = Alignment.Center
+                    ) {
+ 
                             )
                             Image(
                                 painter = painterResource(id = R.drawable.bread),
                                 contentDescription = "bread",
-                                modifier = Modifier.size(50.dp)
+                                modifier = Modifier
+                                    .padding(top = 50.dp)
+                                    .size(50.dp)
                             )
                         }
                     }
+
                 }
+
+
+            }
+        }
+        Row(
+            modifier = Modifier
+                .padding(top = 20.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Card(
+                modifier = Modifier
+                    .width(175.dp)
+                    .height(120.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(234, 236, 240)
+                )
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Triple",
+                        modifier = Modifier.padding(bottom = 40.dp),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(50.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(50.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(50.dp)
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.width(20.dp))
+            Card(
+                modifier = Modifier
+                    .width(175.dp)
+                    .height(120.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(234, 236, 240)
+                )
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Quadruple",
+                        modifier = Modifier.padding(bottom = 40.dp),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(40.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(40.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(40.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.bread),
+                            contentDescription = "bread",
+                            modifier = Modifier
+                                .padding(top = 50.dp)
+                                .size(40.dp)
+                        )
+                    }
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(100.dp))
+        Divider(
+            color = Color(230, 235, 233),
+            modifier = Modifier.fillMaxWidth(),
+            thickness = 1.dp
+        )
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.End,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(230, 235, 233))
+        ) {
+            Button(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(6, 59, 39)
+                ),
+                modifier = Modifier.padding(end = 10.dp)
+                    .width(100.dp)
+            ) {
+                Text(text = "Send")
             }
         }
     }

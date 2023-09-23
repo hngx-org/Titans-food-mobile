@@ -29,7 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.titansfreelunch.R
-import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
 @Composable
 fun SignupStaffDetailsScreen(
@@ -53,7 +52,7 @@ fun SignupStaffDetailsScreen(
             text = "Sign Up.",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(5.dp)
         )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -66,7 +65,7 @@ fun SignupStaffDetailsScreen(
                     containerColor = Color.White
                 ),
                 modifier = Modifier
-                    .padding(20.dp)
+                    .padding(10.dp)
                     .clip(RoundedCornerShape(50))
                     .width(100.dp)
                     .height(100.dp)
@@ -104,7 +103,7 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Enter first name")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Text(
@@ -123,7 +122,7 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Enter last name")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Text(
@@ -142,7 +141,7 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Enter email address")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Text(
@@ -161,7 +160,7 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Enter phone number")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Text(
@@ -180,7 +179,7 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Enter invite code number")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Text(
@@ -199,13 +198,13 @@ fun SignupStaffDetailsScreen(
                     Text(text = "Set password")
                 },
                 modifier = Modifier
-                    .padding(bottom = 10.dp)
+                    .padding(bottom = 5.dp)
                     .fillMaxWidth(0.9f)
             )
             Button(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
                 onClick = { submitStaffSignupDetails() },
-                modifier = Modifier.padding(top = 20.dp)
+                modifier = Modifier.padding(top = 10.dp)
                     .fillMaxWidth(0.9f),
             ) {
                 Text(
@@ -224,7 +223,22 @@ fun SignupStaffDetailsScreen(
 @Composable
 fun SignupStaffDetailsScreenPreview() {
     SignupStaffDetailsScreen(
-        onStaffDetailsSubmit = {} ,
-        submitStaffSignupDetails = {}
+        uiState= SignupStaffUiState(
+            firstName = "",
+            lastName = "",
+            emailAddress = "",
+            phoneNumber = "",
+            password = "",
+            inviteCode = ""
+        ),
+        onFirstNameChange = {},
+    onLastNameChange = {},
+    onEmailAddressChange ={},
+    onPhoneNumberChange = {},
+    onInviteCodeChange = {},
+    onPasswordChange = {},
+    onSignupClick = {},
+    onStaffDetailsSubmit = {},
+    submitStaffSignupDetails = {}
     )
 }
