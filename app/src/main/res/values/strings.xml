@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">TitansFreeLunch</string>
+    <string name="home">Home</string>
+    <string name="you_got">You got a triple launch</string>
+    <string name="time">1hr ago</string>
+    <string name="henry">Henry Min Jao</string>
+    <string name="full_text"> Hi, Gege. The work you do is very much \n
+        appreciated. Keep doing what you do \n
+        know how to do best!! Enjoy your day.</string>
+    <string name="you">You Received</string>
+    <string name="redeem">Redeem!!</string>
+    <string name="bread">🥪 3</string>
+    <string name="sent">You Sent to </string>
+    <string name="henny">Henny Min Jao</string>
+    <string name="add_people">Add People</string>
+
 </resources>
