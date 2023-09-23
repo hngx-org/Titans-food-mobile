@@ -2,7 +2,7 @@ package com.example.titansfreelunch.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,13 +12,14 @@ import com.example.titansfreelunch.ui.screen.authentication.organization.Selecte
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreen
+//import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffUiState
 import com.example.titansfreelunch.ui.screen.random.AddPeople
-
+import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 
 
 //host the free lunch navigation graph
@@ -73,19 +74,22 @@ fun FreeLunchNavHost(
             )
         }
         composable(route = "OrganizationSignup") {
-            SignupOrganizationDetailsScreen(
-                onOrganizationDetailsSubmit = {},
-                onOrganizationSignupButtonClicked = {
-                    navController.navigate("OrganizationDetailsScreen")
-                },
-                onEmailAddressChange = {},
-                onFirstNameChange = {},
-                onLastNameChange = {},
-                onPasswordChange = {},
-                onPhoneNumberChange = {},
-                uiState = SignupOrganizationUiState()
-            )
+            SignupOrganizationDetailsScreen()
         }
+//        composable(route = "OrganizationSignup") {
+//            SignupOrganizationDetailsScreen(
+//                onOrganizationDetailsSubmit = {},
+//                onOrganizationSignupButtonClicked = {
+//                    navController.navigate("OrganizationDetailsScreen")
+//                },
+//                onEmailAddressChange = {},
+//                onFirstNameChange = {},
+//                onLastNameChange = {},
+//                onPasswordChange = {},
+//                onPhoneNumberChange = {},
+//                uiState = SignupOrganizationUiState()
+//            )
+//        }
         composable(route = "OrganizationDetailsScreen") {
             SetupOrganizationScreen(
                 onOrganizationSetupDetailsSubmit = {},

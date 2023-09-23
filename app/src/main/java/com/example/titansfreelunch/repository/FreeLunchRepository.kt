@@ -10,6 +10,9 @@ import com.example.titansfreelunch.data.model.Signup
 import com.example.titansfreelunch.data.model.StaffSignup
 import com.example.titansfreelunch.data.model.Withdrawal
 import com.example.titansfreelunch.data.models.FreeLunchResponse
+import com.example.titansfreelunch.data.models.apimodel.ResponseClass
+import com.example.titansfreelunch.data.models.apimodel.SignupModel
+import retrofit2.Response
 import javax.inject.Inject
 
 class FreeLunchRepository @Inject constructor(private val apiService: ApiService) {
@@ -19,9 +22,10 @@ class FreeLunchRepository @Inject constructor(private val apiService: ApiService
         return apiService.login(request)
     }
 
-    suspend fun signup(request: Signup): FreeLunchResponse {
+    suspend fun signup(request: SignupModel): Response<ResponseClass> {
         return apiService.signup(request)
     }
+
 
     suspend fun createOrganization(authToken: String, request: Organization): FreeLunchResponse {
         return apiService.createOrganization(authToken, request)
