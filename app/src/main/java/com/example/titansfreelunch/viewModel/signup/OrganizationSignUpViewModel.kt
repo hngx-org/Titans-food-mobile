@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 private const val TAG = "OrganizationSignUpViewModel"
 
-
+@HiltViewModel
 class OrganizationSignUpViewModel @Inject constructor(
     private val repository: FreeLunchRepository
 ) : ViewModel() {

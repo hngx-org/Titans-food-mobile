@@ -12,7 +12,6 @@ import com.example.titansfreelunch.ui.screen.authentication.organization.Selecte
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreen
-//import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationUiState
 import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
@@ -73,23 +72,21 @@ fun FreeLunchNavHost(
                 )
             )
         }
+
         composable(route = "OrganizationSignup") {
-            SignupOrganizationDetailsScreen()
+            SignupOrganizationDetailsScreen(
+                onOrganizationDetailsSubmit = {},
+                onOrganizationSignupButtonClicked = {
+                    navController.navigate("OrganizationDetailsScreen")
+                },
+                onEmailAddressChange = {},
+                onFirstNameChange = {},
+                onLastNameChange = {},
+                onPasswordChange = {},
+                onPhoneNumberChange = {},
+                uiState = SignupOrganizationUiState()
+            )
         }
-//        composable(route = "OrganizationSignup") {
-//            SignupOrganizationDetailsScreen(
-//                onOrganizationDetailsSubmit = {},
-//                onOrganizationSignupButtonClicked = {
-//                    navController.navigate("OrganizationDetailsScreen")
-//                },
-//                onEmailAddressChange = {},
-//                onFirstNameChange = {},
-//                onLastNameChange = {},
-//                onPasswordChange = {},
-//                onPhoneNumberChange = {},
-//                uiState = SignupOrganizationUiState()
-//            )
-//        }
         composable(route = "OrganizationDetailsScreen") {
             SetupOrganizationScreen(
                 onOrganizationSetupDetailsSubmit = {},
