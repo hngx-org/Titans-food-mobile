@@ -1,7 +1,6 @@
 package com.example.titansfreelunch.repository
 
 import com.example.titansfreelunch.data.api.ApiService
-import com.example.titansfreelunch.data.model.FreeLunchResponse
 import com.example.titansfreelunch.data.model.Login
 import com.example.titansfreelunch.data.model.Lunch
 import com.example.titansfreelunch.data.model.Organization
@@ -10,6 +9,7 @@ import com.example.titansfreelunch.data.model.OrganizationLunchWallet
 import com.example.titansfreelunch.data.model.Signup
 import com.example.titansfreelunch.data.model.StaffSignup
 import com.example.titansfreelunch.data.model.Withdrawal
+import com.example.titansfreelunch.data.models.FreeLunchResponse
 import javax.inject.Inject
 
 class FreeLunchRepository @Inject constructor(private val apiService: ApiService) {

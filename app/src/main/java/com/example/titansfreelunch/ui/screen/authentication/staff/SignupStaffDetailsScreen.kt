@@ -29,7 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.titansfreelunch.R
-import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
 @Composable
 fun SignupStaffDetailsScreen(
@@ -224,7 +223,22 @@ fun SignupStaffDetailsScreen(
 @Composable
 fun SignupStaffDetailsScreenPreview() {
     SignupStaffDetailsScreen(
-        onStaffDetailsSubmit = {} ,
-        submitStaffSignupDetails = {}
+        uiState= SignupStaffUiState(
+            firstName = "",
+            lastName = "",
+            emailAddress = "",
+            phoneNumber = "",
+            password = "",
+            inviteCode = ""
+        ),
+        onFirstNameChange = {},
+    onLastNameChange = {},
+    onEmailAddressChange ={},
+    onPhoneNumberChange = {},
+    onInviteCodeChange = {},
+    onPasswordChange = {},
+    onSignupClick = {},
+    onStaffDetailsSubmit = {},
+    submitStaffSignupDetails = {}
     )
 }

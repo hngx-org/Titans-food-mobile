@@ -19,9 +19,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffUiState
 
 @Composable
 fun SignupOrganizationDetailsScreen(
+    onFirstNameChange: () -> Unit,
+    onPasswordChange: () -> Unit,
+    onLastNameChange: () -> Unit,
+    onEmailAddressChange: () -> Unit,
+    onPhoneNumberChange: () -> Unit,
+    uiState: SignupOrganizationUiState,
     modifier: Modifier = Modifier,
     onOrganizationDetailsSubmit: () -> Unit,
     onOrganizationSignupButtonClicked: () -> Unit
@@ -63,7 +70,7 @@ fun SignupOrganizationDetailsScreen(
             )
             OutlinedTextField(
                 value = uiState.firstName,
-                onValueChange = onFirstNameChange,
+                onValueChange = { onFirstNameChange },
                 placeholder = {
                     Text(text = "Enter first name")
                 },
@@ -82,7 +89,7 @@ fun SignupOrganizationDetailsScreen(
             )
             OutlinedTextField(
                 value = uiState.lastName,
-                onValueChange = onLastNameChange,
+                onValueChange = { onLastNameChange },
                 placeholder = {
                     Text(text = "Enter last name")
                 },
@@ -101,7 +108,7 @@ fun SignupOrganizationDetailsScreen(
             )
             OutlinedTextField(
                 value = uiState.emailAddress,
-                onValueChange = onEmailAddressChange,
+                onValueChange = { onEmailAddressChange },
                 placeholder = {
                     Text(text = "Enter email address")
                 },
@@ -120,7 +127,7 @@ fun SignupOrganizationDetailsScreen(
             )
             OutlinedTextField(
                 value = uiState.phoneNumber,
-                onValueChange = onPhoneNumberChange,
+                onValueChange = { onPhoneNumberChange },
                 placeholder = {
                     Text(text = "Enter phone number")
                 },
@@ -139,7 +146,7 @@ fun SignupOrganizationDetailsScreen(
             )
             OutlinedTextField(
                 value = uiState.password,
-                onValueChange = onPasswordChange,
+                onValueChange = { onPasswordChange },
                 placeholder = {
                     Text(text = "Enter password")
                 },
@@ -149,7 +156,7 @@ fun SignupOrganizationDetailsScreen(
             )
             Button(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-                onClick = { onOrganizationSignupButtonClicked() }
+                onClick = { onOrganizationSignupButtonClicked() },
                 modifier = Modifier
                     .padding(top = 60.dp)
                     .fillMaxWidth(0.9f),
@@ -171,7 +178,19 @@ fun SignupOrganizationDetailsScreen(
 fun SignupOrganizationDetailsScreenPreview() {
     SignupOrganizationDetailsScreen(
         onOrganizationDetailsSubmit = {},
-        onOrganizationSignupButtonClicked = {}
+        onOrganizationSignupButtonClicked = {},
+        onFirstNameChange = {},
+        onPasswordChange = {},
+        onLastNameChange = {},
+        onEmailAddressChange = {},
+        onPhoneNumberChange = {},
+        uiState = SignupOrganizationUiState(
+            firstName = "",
+            lastName = "",
+            emailAddress = "",
+            phoneNumber = "",
+            password = "",
+        )
     )
 }
 

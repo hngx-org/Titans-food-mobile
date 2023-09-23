@@ -1,6 +1,5 @@
 package com.example.titansfreelunch.data.api
 
-import com.example.titansfreelunch.data.model.FreeLunchResponse
 import com.example.titansfreelunch.data.model.Lunch
 import com.example.titansfreelunch.data.model.Organization
 import com.example.titansfreelunch.data.model.OrganizationInvite
@@ -9,6 +8,7 @@ import com.example.titansfreelunch.data.model.Login
 import com.example.titansfreelunch.data.model.OrganizationLunchWallet
 import com.example.titansfreelunch.data.model.Signup
 import com.example.titansfreelunch.data.model.StaffSignup
+import com.example.titansfreelunch.data.models.FreeLunchResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
