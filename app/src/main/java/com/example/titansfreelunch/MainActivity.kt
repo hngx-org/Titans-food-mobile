@@ -16,6 +16,9 @@ import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 
+
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
