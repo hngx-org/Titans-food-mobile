@@ -195,5 +195,6 @@ fun SetupOrganizationScreenPreview() {
         onLunchPriceChange = {},
         onOrganizationNameChange = {},
         uiState = SetupOrganizationUiState()
+        onOrganizationSetupDone = {}
     )
 }

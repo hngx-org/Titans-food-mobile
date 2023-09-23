@@ -174,6 +174,7 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
                     .padding(bottom = 10.dp)
+
             )
             OutlinedTextField(
                 value = text,
@@ -257,6 +258,9 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                                 modifier = Modifier
                                     .padding(top = 50.dp)
                                     .size(50.dp)
+                        contentAlignment = Alignment.Center
+                    ) {
+ 
                             )
                             Image(
                                 painter = painterResource(id = R.drawable.bread),
