@@ -1,7 +1,9 @@
-package com.example.titansfreelunch.data.model
+package com.example.titansfreelunch.data.models
+
+import com.squareup.moshi.Json
 
 data class Login(
-    val email: String,
-    val password: String
+    @Json(name = "email") val email: String,
+    @Json(name = "password") val password: String
 )
 

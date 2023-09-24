@@ -4,13 +4,13 @@ import com.example.titansfreelunch.data.model.Lunch
 import com.example.titansfreelunch.data.model.Organization
 import com.example.titansfreelunch.data.model.OrganizationInvite
 import com.example.titansfreelunch.data.model.Withdrawal
-import com.example.titansfreelunch.data.model.Login
+import com.example.titansfreelunch.data.models.Login
 import com.example.titansfreelunch.data.model.OrganizationLunchWallet
-import com.example.titansfreelunch.data.model.Signup
 import com.example.titansfreelunch.data.model.StaffSignup
 import com.example.titansfreelunch.data.models.FreeLunchResponse
-import com.example.titansfreelunch.data.models.apimodel.ResponseClass
 import com.example.titansfreelunch.data.models.apimodel.SignupModel
+import com.example.titansfreelunch.data.models.apimodel.SignupResponse
+import com.example.titansfreelunch.data.models.apimodel.UserLoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,12 +22,12 @@ import retrofit2.http.PUT
 interface ApiService {
 
     // Authentication
-    @POST(" ")
-    suspend fun login(@Body request: Login): FreeLunchResponse
+    @POST("api/v1/auth/user/signin")
+    suspend fun login(@Body request: Login): UserLoginResponse
 
     // User Authentication
     @POST("api/v1/auth/user/signup")
-    suspend fun signup(request: SignupModel): Response<ResponseClass>
+    suspend fun signup(@Body request: SignupModel): SignupResponse
 
     @PUT("")
     suspend fun createOrganization(

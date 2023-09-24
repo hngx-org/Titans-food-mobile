@@ -13,6 +13,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -21,17 +23,18 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.titansfreelunch.R
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
+import com.example.titansfreelunch.viewModel.login.LoginViewModel
 
 @Composable
 fun Hi_Login(
-    uiState: HiLoginUiState,
-    onEmailAddressChange: (String) -> Unit,
-    onPasswordChange: (String) -> Unit,
     onLoginClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: LoginViewModel = hiltViewModel()
 ) {
+   val loginUiState by viewModel.loginUiState.collectAsState()
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -57,8 +60,10 @@ fun Hi_Login(
                     style = MaterialTheme.typography.bodyLarge,
                 )
                 OutlinedTextField(
-                    value = uiState.emailAddress,
-                    onValueChange = onEmailAddressChange,
+                    value = loginUiState.emailAddress,
+                    onValueChange = {
+                                    viewModel.updateUserInput(loginUiState.copy(emailAddress = it))
+                    },
                     placeholder = {
                         Text(text = stringResource(id = R.string.hint_email))
                     },
@@ -77,8 +82,10 @@ fun Hi_Login(
                     style = MaterialTheme.typography.bodyLarge,
                 )
                 OutlinedTextField(
-                    value = uiState.emailAddress,
-                    onValueChange = onPasswordChange,
+                    value = loginUiState.password,
+                    onValueChange = {
+                                    viewModel.updateUserInput(loginUiState.copy(password = it))
+                                    },
                     placeholder = {
                         Text(text = stringResource(id = R.string.hint_password))
                     },
@@ -91,7 +98,10 @@ fun Hi_Login(
             }
             Spacer(modifier = Modifier.weight(1f))
             Button(
-                onClick = onLoginClick,
+                onClick = {
+                    onLoginClick()
+//                    viewModel.loginUser()
+                          },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF063B27),
                     contentColor = Color.White
@@ -111,13 +121,8 @@ fun Hi_Login(
 fun PreviewHiLogin() {
     TitansFreeLunchTheme {
         Hi_Login(
-            uiState = HiLoginUiState(
-                emailAddress = "",
-                password = ""
-            ),
-            onEmailAddressChange = {},
-            onPasswordChange = {},
-            onLoginClick = {}
+            onLoginClick = {},
+            viewModel = LoginViewModel()
         )
     }
 }

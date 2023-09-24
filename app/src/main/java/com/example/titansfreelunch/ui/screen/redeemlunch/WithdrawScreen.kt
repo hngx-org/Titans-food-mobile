@@ -69,6 +69,7 @@ import com.example.titansfreelunch.ui.theme.redeemColour
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WithdrawScreen(
+    onWithdrawConfirmClicked: () -> Unit
 ) {
     val numbers = "012345678901"
     var numero by remember {
@@ -493,7 +494,7 @@ fun WithdrawScreen(
                 }
                 Spacer(modifier = Modifier.height(15.dp))
                 FloatingActionButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { onWithdrawConfirmClicked() },
                     containerColor = redeemColour,
                     contentColor = Color.Green,
                     shape = CircleShape,
@@ -533,5 +534,7 @@ fun CategoryItems(
 @Preview(showBackground = true)
 @Composable
 fun PreviewWithdrawScreen(){
-    WithdrawScreen()
+    WithdrawScreen(
+        onWithdrawConfirmClicked = {}
+    )
 }

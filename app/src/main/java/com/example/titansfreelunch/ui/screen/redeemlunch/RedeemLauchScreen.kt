@@ -50,6 +50,8 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RedeemScreen(
+    onXButtonClicked: () -> Unit,
+    onWithdrawButtonClicked: () -> Unit
 ) {
     /**
     val allItems = remember {
@@ -70,7 +72,7 @@ fun RedeemScreen(
             ),
             actions = {
                 FilledIconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { onXButtonClicked() },
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = Color.LightGray
                     )
@@ -175,7 +177,7 @@ fun RedeemScreen(
             )
 
             FilledIconButton(
-                onClick = { /*TODO*/ },
+                onClick = { onWithdrawButtonClicked() },
                 colors = IconButtonDefaults.filledIconButtonColors(
                     containerColor = Color.LightGray
                 )
@@ -248,6 +250,8 @@ fun RedeemScreen(
 @Composable
 fun PreviewRedeemScreen(){
     RedeemScreen(
+        onXButtonClicked = {},
+        onWithdrawButtonClicked = {}
         //isloading = false,
        // contentAfterLoading = {}
     )

@@ -62,7 +62,7 @@ fun Home() {
             ),
             actions = {
                 Icon(
-                    painter = painterResource(id = R.drawable.pic),
+                    painter = painterResource(id = R.drawable.profile_picture),
                     contentDescription = "Close",
                     modifier = Modifier
                         .size(50.dp)
@@ -117,7 +117,7 @@ fun Home() {
 
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.pic),
+                                painter = painterResource(id = R.drawable.profile_picture2),
                                 contentDescription = "",
                                 modifier = Modifier.size(40.dp)
                             )
@@ -278,7 +278,7 @@ fun Home() {
 
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.pic),
+                        painter = painterResource(id = R.drawable.profile_picture2),
                         contentDescription = "",
                         modifier = Modifier.size(40.dp)
                     )
@@ -329,29 +329,27 @@ fun Home() {
         }
         Box(modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp)
-            .padding(top = 16.dp, end = 16.dp),
-            contentAlignment = Alignment.TopEnd
+            .height(220.dp),
+            contentAlignment = Alignment.Center
         ) {
-            FloatingActionButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .size(55.dp)
-            ) {
-                Icon(painter = painterResource(id = R.drawable.send) ,
-                    contentDescription = "FAB")
 
-            }
-        }
-    }
-    NavigationBar {
-        Scaffold(
-            bottomBar = {
             BottomNavigation()
         }
-        ) {}
+
     }
+    FloatingActionButton(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .clip(CircleShape)
+            .size(55.dp)
+    ) {
+        Icon(painter = painterResource(id = R.drawable.send) ,
+            contentDescription = "FAB")
+
+    }
+
+
+
 }
 
 

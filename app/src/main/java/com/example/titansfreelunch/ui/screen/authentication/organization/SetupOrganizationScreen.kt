@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import com.example.titansfreelunch.R
+import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 
 @Composable
 fun SetupOrganizationScreen(
@@ -43,7 +44,7 @@ fun SetupOrganizationScreen(
     onCreateOrganizationClick: () -> Unit,
     modifier: Modifier = Modifier,
     onOrganizationSetupDetailsSubmit: () -> Unit,
-    onOrganizationSetupDone: () -> Unit
+    onOrganizationSetupDone: () -> Unit,
 ) {
     var popupControl by remember { mutableStateOf(false) }
     Column(
@@ -170,7 +171,9 @@ fun OrganizationSetupSuccessfulPopup(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
                 Button(
-                    onClick = { onOrganizationSetupDone() },
+                    onClick = {
+                        onOrganizationSetupDone()
+                              },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     border = BorderStroke(1.dp, Color(146, 169, 160)),
                     modifier = Modifier.fillMaxWidth(0.9f)
@@ -195,6 +198,6 @@ fun SetupOrganizationScreenPreview() {
         onLunchPriceChange = {},
         onOrganizationNameChange = {},
         uiState = SetupOrganizationUiState()
-        onOrganizationSetupDone = {}
+//        onOrganizationSetupDone = {}
     )
 }

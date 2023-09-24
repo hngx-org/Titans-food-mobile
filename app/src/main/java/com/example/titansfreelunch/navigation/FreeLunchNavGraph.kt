@@ -2,11 +2,14 @@ package com.example.titansfreelunch.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.titansfreelunch.ui.hi_login.Hi_Login
 import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SelectedOrganizationSignup
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
@@ -17,7 +20,13 @@ import com.example.titansfreelunch.ui.screen.authentication.staff.AddBankDetails
 import com.example.titansfreelunch.ui.screen.authentication.staff.SelectedStaffSignup
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffDetailsScreen
 import com.example.titansfreelunch.ui.screen.authentication.staff.SignupStaffUiState
+import com.example.titansfreelunch.ui.screen.homepage.MainScreen
+import com.example.titansfreelunch.ui.screen.profile.ProfileScreen
 import com.example.titansfreelunch.ui.screen.random.AddPeople
+import com.example.titansfreelunch.ui.screen.redeemlunch.ConfirmDialog
+import com.example.titansfreelunch.ui.screen.redeemlunch.RedeemScreen
+import com.example.titansfreelunch.ui.screen.redeemlunch.WithdrawScreen
+import com.example.titansfreelunch.ui.screen.settings.SettingsScreen
 import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 
 
@@ -37,6 +46,12 @@ fun FreeLunchNavHost(
             SignupScreen(
                 onSignupAsOrganizationClicked = { navController.navigate("Organization") },
                 onSignupAsStaffClicked = { navController.navigate("Staff") }
+            )
+        }
+        composable(route = "HiLoginScreen") {
+            Hi_Login(
+                onLoginClick = { navController.navigate("Homepage") },
+                viewModel = hiltViewModel()
             )
         }
         composable(route = "Staff") {
@@ -75,16 +90,10 @@ fun FreeLunchNavHost(
 
         composable(route = "OrganizationSignup") {
             SignupOrganizationDetailsScreen(
-                onOrganizationDetailsSubmit = {},
                 onOrganizationSignupButtonClicked = {
-                    navController.navigate("OrganizationDetailsScreen")
+                    navController.navigate("HiLoginScreen")
                 },
-                onEmailAddressChange = {},
-                onFirstNameChange = {},
-                onLastNameChange = {},
-                onPasswordChange = {},
-                onPhoneNumberChange = {},
-                uiState = SignupOrganizationUiState()
+                signUpViewModel = hiltViewModel()
             )
         }
         composable(route = "OrganizationDetailsScreen") {
@@ -109,7 +118,40 @@ fun FreeLunchNavHost(
             AddPeople()
         }
         composable(route = "Homepage") {
-
+            MainScreen(
+                onMainFABClicked = { navController.navigate("RedeemLunch") }
+            )
+        }
+        composable(route = "SettingsScreen") {
+            SettingsScreen(
+                onEditClick = { navController.navigate("EditScreen")},
+                onLogoutClick = { navController.navigate("HiLoginScreen") },
+                onRedeemClick = { navController.navigate("RedeemLunch") }
+            )
+        }
+        composable(route = "RedeemLunch") {
+            RedeemScreen(
+                onXButtonClicked = { navController.navigate("Homepage") },
+                onWithdrawButtonClicked = { navController.navigate("WithdrawScreen") }
+            )
+        }
+        composable(route = "WithdrawSuccessful") {
+            ConfirmDialog(
+                onConfirm = { navController.popBackStack("Homepage", inclusive = false) }
+            )
+        }
+        composable(route = "WithdrawScreen") {
+            WithdrawScreen(
+                onWithdrawConfirmClicked = { navController.navigate("WithdrawSuccessful") }
+            )
+        }
+        composable(route = "EditScreen") {
+            ProfileScreen(
+                onCameraClick = {},
+                onNavigateBack = { navController.navigate("RedeemLunch") },
+                onSaveClick = { navController.navigate("RedeemLunch") },
+                onSavePasswordClick = {}
+            )
         }
     }
 

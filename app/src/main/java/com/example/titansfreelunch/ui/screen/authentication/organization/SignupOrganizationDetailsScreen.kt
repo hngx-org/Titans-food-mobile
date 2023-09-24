@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 import dagger.hilt.android.internal.lifecycle.HiltViewModelFactory
 
@@ -159,16 +160,11 @@ import dagger.hilt.android.internal.lifecycle.HiltViewModelFactory
 
 @Composable
 fun SignupOrganizationDetailsScreen(
-    onFirstNameChange: () -> Unit,
-    onPasswordChange: () -> Unit,
-    onLastNameChange: () -> Unit,
-    onEmailAddressChange: () -> Unit,
-    onPhoneNumberChange: () -> Unit,
-    uiState: SignupOrganizationUiState,
     modifier: Modifier = Modifier,
-    onOrganizationDetailsSubmit: () -> Unit,
-    onOrganizationSignupButtonClicked: () -> Unit
+    onOrganizationSignupButtonClicked: () -> Unit,
+    signUpViewModel: OrganizationSignUpViewModel = hiltViewModel()
 ) {
+    val signupUiState by signUpViewModel.signupUiState.collectAsState()
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -205,8 +201,10 @@ fun SignupOrganizationDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = uiState.firstName,
-                onValueChange = { onFirstNameChange },
+                value = signupUiState.firstName,
+                onValueChange = {
+                                signUpViewModel.updateUserSignupInput(signupUiState.copy(firstName = it))
+                                },
                 placeholder = {
                     Text(text = "Enter first name")
                 },
@@ -224,8 +222,10 @@ fun SignupOrganizationDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = uiState.lastName,
-                onValueChange = { onLastNameChange },
+                value = signupUiState.lastName,
+                onValueChange = {
+                                signUpViewModel.updateUserSignupInput(signupUiState.copy(lastName = it))
+                                },
                 placeholder = {
                     Text(text = "Enter last name")
                 },
@@ -243,8 +243,10 @@ fun SignupOrganizationDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = uiState.emailAddress,
-                onValueChange = { onEmailAddressChange },
+                value = signupUiState.emailAddress,
+                onValueChange = {
+                                signUpViewModel.updateUserSignupInput(signupUiState.copy(emailAddress = it))
+                                },
                 placeholder = {
                     Text(text = "Enter email address")
                 },
@@ -252,25 +254,25 @@ fun SignupOrganizationDetailsScreen(
                     .padding(bottom = 10.dp)
                     .fillMaxWidth(0.9f)
             )
-            Text(
-                text = "Phone Number",
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .padding(bottom = 5.dp),
-                fontSize = 16.sp,
-                textAlign = TextAlign.Start
-            )
-            OutlinedTextField(
-                value = uiState.phoneNumber,
-                onValueChange = { onPhoneNumberChange },
-                placeholder = {
-                    Text(text = "Enter phone number")
-                },
-                modifier = Modifier
-                    .padding(bottom = 10.dp)
-                    .fillMaxWidth(0.9f)
-            )
+//            Text(
+//                text = "Phone Number",
+//                fontWeight = FontWeight.Bold,
+//                modifier = Modifier
+//                    .fillMaxWidth(0.9f)
+//                    .padding(bottom = 5.dp),
+//                fontSize = 16.sp,
+//                textAlign = TextAlign.Start
+//            )
+//            OutlinedTextField(
+//                value = uiState.phoneNumber,
+//                onValueChange = { onPhoneNumberChange },
+//                placeholder = {
+//                    Text(text = "Enter phone number")
+//                },
+//                modifier = Modifier
+//                    .padding(bottom = 10.dp)
+//                    .fillMaxWidth(0.9f)
+//            )
             Text(
                 text = "Set Password",
                 fontWeight = FontWeight.Bold,
@@ -281,8 +283,10 @@ fun SignupOrganizationDetailsScreen(
                 textAlign = TextAlign.Start
             )
             OutlinedTextField(
-                value = uiState.password,
-                onValueChange = { onPasswordChange },
+                value = signupUiState.password,
+                onValueChange = {
+                                signUpViewModel.updateUserSignupInput(signupUiState.copy(password = it))
+                                },
                 placeholder = {
                     Text(text = "Enter password")
                 },
@@ -292,7 +296,10 @@ fun SignupOrganizationDetailsScreen(
             )
             Button(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
-                onClick = { onOrganizationSignupButtonClicked() },
+                onClick = {
+                    signUpViewModel.trySignupApi()
+                    onOrganizationSignupButtonClicked()
+                          },
                 modifier = Modifier
                     .padding(top = 60.dp)
                     .fillMaxWidth(0.9f),
@@ -313,20 +320,9 @@ fun SignupOrganizationDetailsScreen(
 @Composable
 fun SignupOrganizationDetailsScreenPreview() {
     SignupOrganizationDetailsScreen(
-        onOrganizationDetailsSubmit = {},
         onOrganizationSignupButtonClicked = {},
-        onFirstNameChange = {},
-        onPasswordChange = {},
-        onLastNameChange = {},
-        onEmailAddressChange = {},
-        onPhoneNumberChange = {},
-        uiState = SignupOrganizationUiState(
-            firstName = "",
-            lastName = "",
-            emailAddress = "",
-            phoneNumber = "",
-            password = "",
-        )
+        signUpViewModel = hiltViewModel()
+
     )
 }
 
