@@ -50,8 +50,10 @@ fun FreeLunchNavHost(
         }
         composable(route = "HiLoginScreen") {
             Hi_Login(
-                onLoginClick = { navController.navigate("Homepage") },
-                viewModel = hiltViewModel()
+
+//                onLoginClick = { navController.navigate("Homepage") },
+                viewModel = hiltViewModel(),
+                onSuccessNavigation = { navController.navigate("Homepage") }
             )
         }
         composable(route = "Staff") {

@@ -24,17 +24,26 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.titansfreelunch.R
 import com.example.titansfreelunch.ui.theme.TitansFreeLunchTheme
 import com.example.titansfreelunch.viewModel.login.LoginViewModel
 
+
+
+
+
+
 @Composable
 fun Hi_Login(
-    onLoginClick: () -> Unit,
+//    onLoginClick: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: LoginViewModel = hiltViewModel()
+    viewModel: LoginViewModel = hiltViewModel(),
+    onSuccessNavigation: () -> Unit
 ) {
    val loginUiState by viewModel.loginUiState.collectAsState()
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -99,8 +108,8 @@ fun Hi_Login(
             Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = {
-                    onLoginClick()
-//                    viewModel.loginUser()
+//                    onLoginClick()
+                    viewModel.loginUser()
                           },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF063B27),
@@ -114,6 +123,11 @@ fun Hi_Login(
             }
         }
     }
+    if (loginUiState.onSuccess) {
+        //to navigate to homepage
+        //capture user data(email, name)
+        onSuccessNavigation()
+    }
 }
 
 @Preview(showBackground = true)
@@ -121,8 +135,9 @@ fun Hi_Login(
 fun PreviewHiLogin() {
     TitansFreeLunchTheme {
         Hi_Login(
-            onLoginClick = {},
-            viewModel = LoginViewModel()
+//            onLoginClick = {},
+            viewModel = LoginViewModel(),
+            onSuccessNavigation = {}
         )
     }
 }
