@@ -20,7 +20,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="lunch">Lunch Received</string>
-    <string name="bread">bread</string>
+<!--    <string name="bread">bread</string>-->
     <string name="screen_name">Redeem Launch</string>
     <string name="medal">Medal</string>
     <string name="welcome_to_lu">Welcome to LU</string>

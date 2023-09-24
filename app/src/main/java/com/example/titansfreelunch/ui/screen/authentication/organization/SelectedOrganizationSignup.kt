@@ -36,8 +36,6 @@ import com.example.titansfreelunch.R
 import com.example.titansfreelunch.navigation.NavigationDestination
 
 
-
-
 @Composable
 fun SelectedOrganizationSignup(
     modifier: Modifier = Modifier,

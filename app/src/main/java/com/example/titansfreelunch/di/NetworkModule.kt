@@ -1,6 +1,6 @@
 package com.example.titansfreelunch.di
 
-import com.example.titansfreelunch.data.api.ApiClient
+import com.example.titansfreelunch.data.retrofit.ApiClient
 import com.example.titansfreelunch.data.api.ApiService
 import dagger.Module
 import dagger.Provides

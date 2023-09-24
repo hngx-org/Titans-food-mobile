@@ -257,10 +257,8 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                                 contentDescription = "bread",
                                 modifier = Modifier
                                     .padding(top = 50.dp)
-                                    .size(50.dp)
-                        contentAlignment = Alignment.Center
-                    ) {
- 
+                                    .size(50.dp) ,
+                                alignment = Alignment.Center
                             )
                             Image(
                                 painter = painterResource(id = R.drawable.bread),
@@ -271,10 +269,7 @@ fun SelectMemberScreen(modifier: Modifier = Modifier) {
                             )
                         }
                     }
-
                 }
-
-
             }
         }
         Row(
