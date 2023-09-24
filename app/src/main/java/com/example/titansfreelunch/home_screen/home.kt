@@ -61,13 +61,13 @@ fun Home() {
                 containerColor = homeColor,
             ),
             actions = {
-                Icon(
-                    painter = painterResource(id = R.drawable.pic),
-                    contentDescription = "Close",
-                    modifier = Modifier
-                        .size(50.dp)
-                        .padding(5.dp),
-                )
+//                Icon(
+//                    painter = painterResource(id = R.drawable.pic),
+//                    contentDescription = "Close",
+//                    modifier = Modifier
+//                        .size(50.dp)
+//                        .padding(5.dp),
+//                )
             }
         )
         Column(modifier = Modifier
@@ -116,11 +116,11 @@ fun Home() {
                                 .padding(start = 8.dp)
 
                         ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.pic),
-                                contentDescription = "",
-                                modifier = Modifier.size(40.dp)
-                            )
+//                            Icon(
+//                                painter = painterResource(id = R.drawable.pic),
+//                                contentDescription = "",
+//                                modifier = Modifier.size(40.dp)
+//                            )
                             Text(
                                 text = "Henry Min Jao"
                             )
@@ -277,11 +277,11 @@ fun Home() {
                         .padding(start = 8.dp)
 
                 ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.pic),
-                        contentDescription = "",
-                        modifier = Modifier.size(40.dp)
-                    )
+//                    Icon(
+//                        painter = painterResource(id = R.drawable.pic),
+//                        contentDescription = "",
+//                        modifier = Modifier.size(40.dp)
+//                    )
                     Text(
                         text = "Henry Min Jao"
                     )

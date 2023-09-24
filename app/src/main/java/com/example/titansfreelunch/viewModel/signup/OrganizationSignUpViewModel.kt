@@ -1,17 +1,17 @@
 package com.example.titansfreelunch.viewModel.signup
 
-import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.titansfreelunch.data.models.apimodel.SignupModel
+import com.example.titansfreelunch.data.models.OrganizationModel
 import com.example.titansfreelunch.repository.FreeLunchRepository
 import com.example.titansfreelunch.ui.screen.authentication.organization.SignupOrganizationUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,57 +23,39 @@ class OrganizationSignUpViewModel @Inject constructor(
     private val repository: FreeLunchRepository
 ) : ViewModel() {
 
-    var firstName = MutableStateFlow("")
-    var lastName = MutableStateFlow("")
-    var email = MutableStateFlow("")
-    var password = MutableStateFlow("")
-    var phoneNumber = MutableStateFlow("")
+    var successMessage = MutableStateFlow("")
+    var errorMessage = MutableStateFlow("")
+    var statusCheck = MutableStateFlow(false)
 
-    var sucessMessage = ""
-
-    var errorMessage: String? = ""
-
-    fun saveDetails() {
+    fun saveOrganizationDetails(uiState: SignupOrganizationUiState) {
         viewModelScope.launch {
-            val request = SignupModel(
-                firstName.value,
-                lastName.value,
-                email.value, password.value, phoneNumber.value
-            )
-
-            val response = repository.signup(request)
-
-            if (response.isSuccessful) {
-                val responseBody = response.body()
-                if (responseBody != null) {
-
-                    val statusCode = responseBody.statusCode.toInt()
-
-                    if (statusCode == 201) {
-
-                        sucessMessage = responseBody.message
-
-                        Log.d(TAG, "Response is $statusCode")
+            flow {
+                val request = OrganizationModel(
+                    uiState.firstName,
+                    uiState.lastName,
+                    uiState.emailAddress,
+                    uiState.phoneNumber,
+                    uiState.password
+                )
+                val response = repository.signup(request)
+                emit(response)
+            }.collectLatest { response ->
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        statusCheck.value = true
+                        successMessage.value = responseBody.message
                     }
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    statusCheck.value = false
+                    errorMessage.value = errorBody !!
                 }
-
-            } else {
-                // Handle the error
-                val errorBody = response.errorBody()?.string()
-
-                errorMessage = errorBody
-
-                Log.d(TAG, "Response is $errorBody")
-                // Parse and handle the error message
             }
+            Log.i(TAG, "Success message is $successMessage")
         }
-        Log.d(TAG, "Successful Response is $sucessMessage")
-
-        Log.d(TAG, "Error Response is $errorMessage")
     }
 }
-
-
 
 
 

@@ -2,6 +2,8 @@ package com.example.titansfreelunch.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -25,9 +27,10 @@ import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 @Composable
 fun FreeLunchNavHost(
     navHostController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = "Start",
@@ -75,16 +78,7 @@ fun FreeLunchNavHost(
 
         composable(route = "OrganizationSignup") {
             SignupOrganizationDetailsScreen(
-                onOrganizationDetailsSubmit = {},
-                onOrganizationSignupButtonClicked = {
-                    navController.navigate("OrganizationDetailsScreen")
-                },
-                onEmailAddressChange = {},
-                onFirstNameChange = {},
-                onLastNameChange = {},
-                onPasswordChange = {},
-                onPhoneNumberChange = {},
-                uiState = SignupOrganizationUiState()
+                navController = navController
             )
         }
         composable(route = "OrganizationDetailsScreen") {
@@ -114,3 +108,17 @@ fun FreeLunchNavHost(
     }
 
 }
+
+//SignupOrganizationDetailsScreen(
+//onOrganizationDetailsSubmit = {},
+//onOrganizationSignupButtonClicked = {
+//    navController.navigate("OrganizationDetailsScreen")
+//},
+//onEmailAddressChange = {},
+//onFirstNameChange = {},
+//onLastNameChange = {},
+//onPasswordChange = {},
+//onPhoneNumberChange = {},
+//uiState = SignupOrganizationUiState(),
+//viewModel = hiltViewModel()
+//)
