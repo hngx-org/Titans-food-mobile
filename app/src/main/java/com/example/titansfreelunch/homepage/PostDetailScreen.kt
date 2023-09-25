@@ -65,7 +65,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.titansfreelunch.ui.theme.DarkGreen
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PostDetailScreen() {

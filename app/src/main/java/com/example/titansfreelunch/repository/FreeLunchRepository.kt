@@ -1,15 +1,15 @@
 package com.example.titansfreelunch.repository
 
 import com.example.titansfreelunch.data.api.ApiService
-import com.example.titansfreelunch.data.model.Login
+import com.example.titansfreelunch.data.models.LoginModel
 import com.example.titansfreelunch.data.model.Lunch
 import com.example.titansfreelunch.data.model.Organization
-import com.example.titansfreelunch.data.model.OrganizationInvite
+import com.example.titansfreelunch.data.models.OrganizationInvite
 import com.example.titansfreelunch.data.model.OrganizationLunchWallet
 import com.example.titansfreelunch.data.model.StaffSignup
 import com.example.titansfreelunch.data.model.Withdrawal
 import com.example.titansfreelunch.data.models.FreeLunchResponse
-import com.example.titansfreelunch.data.models.OrganizationModel
+import com.example.titansfreelunch.data.models.SignUpModel
 import com.example.titansfreelunch.data.models.ResponseClass
 import retrofit2.Response
 import javax.inject.Inject
@@ -17,11 +17,11 @@ import javax.inject.Inject
 class FreeLunchRepository @Inject constructor(private val apiService: ApiService) {
 
     // Authentication
-    suspend fun login(request: Login): FreeLunchResponse {
+    suspend fun login(request: LoginModel): FreeLunchResponse {
         return apiService.login(request)
     }
 
-    suspend fun signup(request: OrganizationModel): Response<ResponseClass> {
+    suspend fun signup(request: SignUpModel): Response<ResponseClass> {
         return apiService.signup(request)
     }
 

@@ -16,6 +16,9 @@ val headerColor = Color(0xFF161A20)
 val loginColor = Color(0xFFE0E2E6)
 val buttonColor = Color(0xFF063B27)
 val btnContent = Color(0xFF517668)
-val redeemColour = Color(0xFF063B27)
+
 val btnColor = Color(0xFFECECEC)
+val DarkGreen = Color(0xFF063B27)
+val Green = Color(0xFF063B27)
+val redeemColour = Color(0xFF063B27)
 

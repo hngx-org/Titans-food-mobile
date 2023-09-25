@@ -31,6 +31,7 @@ fun FreeLunchNavHost(
 ) {
     val navController = rememberNavController()
 
+
     NavHost(
         navController = navController,
         startDestination = "Start",
