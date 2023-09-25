@@ -19,6 +19,6 @@ val btnContent = Color(0xFF517668)
 
 val btnColor = Color(0xFFECECEC)
 val DarkGreen = Color(0xFF063B27)
-val Green = Color(0xFF063B27)
+val Green = Color(0xFF018855)
 val redeemColour = Color(0xFF063B27)
 

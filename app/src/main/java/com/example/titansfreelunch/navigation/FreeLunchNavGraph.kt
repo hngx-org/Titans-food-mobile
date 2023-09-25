@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.titansfreelunch.homepage.MainScreen
 import com.example.titansfreelunch.ui.screen.authentication.SignupScreen
 import com.example.titansfreelunch.ui.screen.authentication.organization.SelectedOrganizationSignup
 import com.example.titansfreelunch.ui.screen.authentication.organization.SetupOrganizationScreen
@@ -90,7 +91,7 @@ fun FreeLunchNavHost(
                 },
                 onOrganizationNameChange = {},
                 onLunchPriceChange = {},
-                onCreateOrganizationClick = {},
+                onCreateOrganizationClick = { navController.navigate("Homepage") },
                 uiState = SetupOrganizationUiState()
             )
         }
@@ -104,7 +105,7 @@ fun FreeLunchNavHost(
             AddPeople()
         }
         composable(route = "Homepage") {
-
+            MainScreen()
         }
     }
 

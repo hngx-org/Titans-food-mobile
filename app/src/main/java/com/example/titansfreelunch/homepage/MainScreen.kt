@@ -70,9 +70,10 @@ fun MainScreen() {
                     shape = RoundedCornerShape(30.dp),
                     containerColor = DarkGreen
                 ) {
-                    Icon(imageVector = Icons.Filled.ArrowForward,
+                    Icon(
+                        imageVector = Icons.Filled.ArrowForward,
                         contentDescription = "Next",
-                        tint = com.example.titansfreelunch.ui.theme.Green
+                        tint = com.example.titansfreelunch.ui.theme.Green,
                     )
                 }
             }

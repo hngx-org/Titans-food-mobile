@@ -46,6 +46,7 @@ fun SetupOrganizationScreen(
     onOrganizationSetupDone: () -> Unit
 ) {
     var popupControl by remember { mutableStateOf(false) }
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
