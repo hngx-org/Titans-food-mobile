@@ -25,8 +25,6 @@ fun SetupNavGraph(
                 onRedeemClick = {  }
             )
         }
-        composable(route = "") {
 
-        }
     }
 }

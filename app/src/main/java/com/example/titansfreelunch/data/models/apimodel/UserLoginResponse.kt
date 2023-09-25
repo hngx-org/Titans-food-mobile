@@ -12,6 +12,6 @@ data class UserLoginData(
     @Json(name="access_token") val accessToken: String,
     @Json(name="email") val email: String,
     @Json(name="id") val id: Int,
-    @Json(name="isAdmin") val isAdmin: Boolean,
-    @Json(name="org_id") val orgId: Int,
+    @Json(name="isAdmin") val isAdmin: Int,
+    @Json(name="org_id") val orgId: Int?,
 )

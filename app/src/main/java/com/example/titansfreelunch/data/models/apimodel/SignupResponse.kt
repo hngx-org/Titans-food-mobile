@@ -14,7 +14,7 @@ data class SignupData(
     @Json(name="first_name") val firstName: String,
     @Json(name="last_name") val lastName: String,
     @Json(name="email") val email: String,
-    @Json(name="is_admin") val isAdmin: Boolean,
+    @Json(name="is_admin") val isAdmin: Int,
     @Json(name="updated_at") val updateAt: String,
     @Json(name = "created_at") val createdAt: String
 )

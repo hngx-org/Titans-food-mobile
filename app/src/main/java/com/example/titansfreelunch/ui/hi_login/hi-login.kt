@@ -37,10 +37,10 @@ import com.example.titansfreelunch.viewModel.login.LoginViewModel
 
 @Composable
 fun Hi_Login(
-//    onLoginClick: () -> Unit,
+    onLoginClick: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
-    onSuccessNavigation: () -> Unit
+//    onSuccessNavigation: () -> Unit
 ) {
    val loginUiState by viewModel.loginUiState.collectAsState()
 
@@ -108,8 +108,11 @@ fun Hi_Login(
             Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = {
-//                    onLoginClick()
+//
                     viewModel.loginUser()
+                    if (loginUiState.onSuccess){
+                        onLoginClick()
+                    }
                           },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF063B27),
@@ -123,11 +126,11 @@ fun Hi_Login(
             }
         }
     }
-    if (loginUiState.onSuccess) {
+//    if (loginUiState.onSuccess) {
         //to navigate to homepage
-        //capture user data(email, name)
-        onSuccessNavigation()
-    }
+//        //capture user data(email, name)
+//        onSuccessNavigation()
+//    }
 }
 
 @Preview(showBackground = true)
@@ -135,9 +138,9 @@ fun Hi_Login(
 fun PreviewHiLogin() {
     TitansFreeLunchTheme {
         Hi_Login(
-//            onLoginClick = {},
+            onLoginClick = {},
             viewModel = LoginViewModel(),
-            onSuccessNavigation = {}
+//            onSuccessNavigation = {}
         )
     }
 }
