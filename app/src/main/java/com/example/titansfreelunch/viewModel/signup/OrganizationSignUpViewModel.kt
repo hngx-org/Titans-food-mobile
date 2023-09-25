@@ -44,6 +44,7 @@ class OrganizationSignUpViewModel @Inject constructor(
                 val response = repository.signup(request)
                 emit(response)
             }.collectLatest { response ->
+                // Hopefully this works
                 if (response.isSuccessful) {
                     navigateToNextScreen()
                     Log.i(TAG, "This was called under isSuccessful")
@@ -51,7 +52,7 @@ class OrganizationSignUpViewModel @Inject constructor(
 
                     Log.i(TAG, "This was called under else")
                 }
-                Log.i(TAG, "Response is ${response.body()?.status}")
+                Log.i(TAG, "Response is ${response.body()?.status_code}")
             }
         }
     }
