@@ -6,9 +6,9 @@ data class ResponseClass (
     val status_code: Int,
     val status: String,
     val message: String,
-    val data: OrganizationModel,
+    val data: SignUpModel,
 )
-data class OrganizationModel (
+data class SignUpModel (
     @Json(name = "fist_name") val first_name: String,
     @Json(name = "last_name") val last_name: String,
     @Json(name = "email") val email: String,

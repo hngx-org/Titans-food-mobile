@@ -1,7 +1,6 @@
 package com.example.titansfreelunch.ui.screen.authentication.organization
 
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,10 +10,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,7 +25,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -37,16 +35,18 @@ import com.example.titansfreelunch.viewModel.signup.OrganizationSignUpViewModel
 
 @Composable
 fun SignupOrganizationDetailsScreen(
-    navController: NavHostController,
     modifier: Modifier = Modifier,
+    navController : NavHostController
 ) {
-
-    val viewModel : OrganizationSignUpViewModel = hiltViewModel()
     var uiState by remember { mutableStateOf(SignupOrganizationUiState()) }
-    val statusCheck by viewModel.statusCheck.collectAsState()
-    val successMessage by viewModel.successMessage.collectAsState()
-    val errorMessage by viewModel.errorMessage.collectAsState()
-    val context = LocalContext.current
+    val viewModel : OrganizationSignUpViewModel = hiltViewModel()
+
+    val navigateNextToScreen by viewModel.navigateToNextScreen.collectAsState()
+    if (navigateNextToScreen) {
+        navController.navigate("OrganizationDetailsScreen")
+        // Reset the trigger to prevent repeated navigation
+        viewModel.resetNavigation()
+    }
 
     Column(
         modifier = modifier
@@ -185,12 +185,6 @@ fun SignupOrganizationDetailsScreen(
                 colors = ButtonDefaults.outlinedButtonColors( Color(6, 59, 39)),
                 onClick = {
                     viewModel.saveOrganizationDetails(uiState = uiState)
-                    navController.navigate("OrganizationDetailsScreen")
-                    if (statusCheck) {
-                        Toast.makeText(context, successMessage, Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
-                    }
                 },
                 modifier = Modifier
                     .padding(top = 60.dp)
@@ -205,41 +199,33 @@ fun SignupOrganizationDetailsScreen(
         }
 
     }
-
 }
 
 
-//fun SignupOrganizationDetailsScreen(
-//    onFirstNameChange: () -> Unit,
-//    onPasswordChange: () -> Unit,
-//    onLastNameChange: () -> Unit,
-//    onEmailAddressChange: () -> Unit,
-//    onPhoneNumberChange: () -> Unit,
-//    uiState: SignupOrganizationUiState,
-//    modifier: Modifier = Modifier,
-//    onOrganizationDetailsSubmit: () -> Unit,
-//    onOrganizationSignupButtonClicked: () -> Unit,
-//    viewModel : OrganizationSignUpViewModel
-//) {
 
-@Preview(showBackground = true)
-@Composable
-fun SignupOrganizationDetailsScreenPreview() {
-//    SignupOrganizationDetailsScreen(
-//        onOrganizationDetailsSubmit = {},
-//        onOrganizationSignupButtonClicked = {},
-//        onFirstNameChange = {},
-//        onPasswordChange = {},
-//        onLastNameChange = {},
-//        onEmailAddressChange = {},
-//        onPhoneNumberChange = {},
-//        uiState = SignupOrganizationUiState(
-//            firstName = "",
-//            lastName = "",
-//            emailAddress = "",
-//            phoneNumber = "",
-//            password = "",
-//        )
-//    )
-}
-
+//@Composable
+//fun SignUpOrgDetailScreen(navController: NavHostController) {
+//    val viewModel : OrganizationSignUpViewModel = hiltViewModel()
+//
+//    viewModel.uiState.collectAsState().value.let { state ->
+//        when(state) {
+//            is UiState.Idle -> {
+//                SignupOrganizationDetailsScreen(
+//                    viewModel = viewModel
+//                )
+//            }
+//            is UiState.Success -> {
+//                if (UiState.Success == true)
+//                navController.navigate("Staff")
+//            }
+//            is UiState.Error -> {
+////                ErrorSnackBar(
+////                    snackbarHostState = snackbarHostState,
+////                    message = state.errorMessage
+////                )
+//            }
+//        }
+//    }
+//
+//
+//}
